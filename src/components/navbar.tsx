@@ -1,56 +1,74 @@
 import React from "react";
 import Button from "./button";
 import Link from "next/link";
-import { Send, LogIn } from "react-feather";
+import { Send, Menu, X } from "react-feather";
 
 const links = [
   {
-    path: "/careers",
-    label: "Careers",
-  },
-  {
-    path: "/about-us",
-    label: "About Us",
+    path: "/tutorials",
+    label: "Tutorials",
   },
   {
     path: "/solutions",
     label: "Solutions",
   },
   {
-    path: "/tutorials",
-    label: "Tutorials",
+    path: "/about-us",
+    label: "About Us",
+  },
+  {
+    path: "/careers",
+    label: "Careers",
   },
 ];
 
 const Navbar: React.FC = () => {
-  const [load, setLoad] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   return (
-    <nav className="flex h-16 w-full items-center justify-around px-7">
-      <div className="w-40">
+    <nav className="mx-auto flex h-16 w-full items-center justify-between px-16 md:max-w-7xl">
+      <div className="flex w-2/3 md:w-auto md:justify-center">
         <Link href="/" passHref>
           <a>Logo</a>
         </Link>
       </div>
-      <ul className="flex space-x-6">
+      <div className="hidden items-center justify-between md:flex">
+        <ul className="mr-7 space-x-6 md:flex">
+          {links.map((link) => (
+            <li key={link.path}>
+              <Link href={link.path} passHref>
+                <a>{link.label}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="justify-center md:flex">
+          <Button leadingIcon={<Send className="mr-2 h-[17px] w-auto" />}>Contact Us</Button>
+        </div>
+      </div>
+      <button className="block md:hidden" onClick={() => setOpen((x) => !x)}>
+        {open ? <X className="h-6 w-auto" /> : <Menu className="h-6 w-auto" />}
+      </button>
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          className="absolute top-0 left-0 z-[5] block min-h-[100vh] w-[100vw] bg-slate-500 opacity-95 md:hidden"
+        />
+      )}
+      <div
+        className={`absolute left-[0] top-0 z-10 block h-full ${
+          open ? "translate-x-0" : "-translate-x-96"
+        } bg-stone-200 transition-all duration-300 md:hidden`}
+      >
         {links.map((link) => (
-          <li key={link.path}>
-            <Link href={link.path} passHref>
-              <a>{link.label}</a>
-            </Link>
-          </li>
+          <Link href={link.path} key={link.path} passHref>
+            <a className="ml-5 mr-32 mt-5 block">{link.label}</a>
+          </Link>
         ))}
-      </ul>
-      <div className="flex w-64 justify-between">
-        <Button variant="outline" leadingIcon={<LogIn className="mr-2 h-[20px] w-auto" />}>
-          Log In
-        </Button>
-        <Button
-          loading={load}
-          onClick={() => setLoad((x) => !x)}
-          leadingIcon={<Send className="mr-2 h-[17px] w-auto" />}
-        >
-          Contact Us
-        </Button>
+        <div className="mt-5 pr-10">
+          <Button className="ml-5" leadingIcon={<Send className="mr-2 h-[18px] w-auto" />}>
+            Contact Us
+          </Button>
+        </div>
       </div>
     </nav>
   );
