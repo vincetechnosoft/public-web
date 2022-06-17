@@ -124,7 +124,7 @@ const className = {
     return `
     ${err === undefined && "border-black"}
       ${this.input(err)}
-      pl-1 py-1 file:h-15 file:text-white file:py-2 file:px-6 file:rounded file:bg-black file:border-none
+      pl-1 pt-1 pb-1 file:h-15 file:text-white file:py-2 file:px-6 file:rounded file:bg-black file:border-none
     `;
   },
   err(err?: string | null) {
