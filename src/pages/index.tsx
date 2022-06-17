@@ -4,7 +4,9 @@ import { Zap, Clock, Map } from "react-feather";
 
 const highlights = [
   {
-    icon: <Map className="h-[26px] w-auto fill-indigo-400 stroke-white stroke-1" />,
+    icon: (
+      <Map className="h-[26px] w-auto fill-indigo-400 stroke-white stroke-1" />
+    ),
     label: "India Based",
   },
   {
@@ -23,15 +25,22 @@ const Home: NextPageWithLayout = () => {
       <div className="mt-7 flex items-center justify-between px-5 md:mt-0 md:flex md:min-h-[calc(80vh_-_4rem)]">
         <div className="self-centrer mx-auto w-full space-y-7 text-center md:space-y-10 md:px-10 lg:w-2/3">
           <h2 className="mt-5 text-5xl font-extrabold md:text-6xl">
-            Supercharge your app development.
+            Problems with Inventory management?
+            <br />{" "}
+            <span className="mt-5 text-4xl uppercase text-indigo-500">
+              Just a knock away!
+            </span>
           </h2>
           <div className="flex min-w-full justify-center lg:hidden">
-            <img src="/graphic-tablet.png" alt="Graphic Desk" className="max-h-96" />
+            <img
+              src="/graphic-tablet.png"
+              alt="Graphic Desk"
+              className="max-h-96"
+            />
           </div>
           <p className="md:px-24">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at voluptatem sequi labore
-            nulla omnis quis ea, quidem debitis quisquam deleniti veritatis molestias itaque ipsa
-            nostrum esse repellendus illo magni.
+            One-Stop Solution to your inventory management, get Vince Technosoft
+            services to help you with your day to day task hassle free.
           </p>
           <ul className="flex w-full justify-between md:px-24">
             {highlights.map((item) => (
@@ -43,7 +52,11 @@ const Home: NextPageWithLayout = () => {
           </ul>
         </div>
         <div className="hidden w-1/3 lg:block">
-          <img src="/graphic-tablet.png" alt="Graphic Desk" className="aspect-square max-h-96" />
+          <img
+            src="/graphic-tablet.png"
+            alt="Graphic Desk"
+            className="aspect-square max-h-96"
+          />
         </div>
       </div>
     </>

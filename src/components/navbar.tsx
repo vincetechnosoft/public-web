@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
     <nav className="mx-auto flex h-16 w-full items-center justify-between px-16 md:max-w-7xl">
       <div className="flex w-2/3 md:w-auto md:justify-center">
         <Link href="/" passHref>
-          <a>Logo</a>
+          <a className="focus:text-rose-500 focus:outline-none">Logo</a>
         </Link>
       </div>
       <div className="hidden items-center justify-between md:flex">
@@ -36,13 +36,17 @@ const Navbar: React.FC = () => {
           {links.map((link) => (
             <li key={link.path}>
               <Link href={link.path} passHref>
-                <a>{link.label}</a>
+                <a className="focus:text-rose-500 focus:outline-none">
+                  {link.label}
+                </a>
               </Link>
             </li>
           ))}
         </ul>
         <div className="justify-center md:flex">
-          <Button leadingIcon={<Send className="mr-2 h-[17px] w-auto" />}>Contact Us</Button>
+          <Button leadingIcon={<Send className="mr-2 h-[17px] w-auto" />}>
+            Contact Us
+          </Button>
         </div>
       </div>
       <button className="block md:hidden" onClick={() => setOpen((x) => !x)}>
@@ -65,7 +69,10 @@ const Navbar: React.FC = () => {
           </Link>
         ))}
         <div className="mt-5 pr-10">
-          <Button className="ml-5" leadingIcon={<Send className="mr-2 h-[18px] w-auto" />}>
+          <Button
+            className="ml-5"
+            leadingIcon={<Send className="mr-2 h-[18px] w-auto" />}
+          >
             Contact Us
           </Button>
         </div>
