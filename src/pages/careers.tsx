@@ -256,8 +256,10 @@ function CareersForm() {
                 showDismissButton
                 type="danger"
                 title="Error While Submitting Form"
-                children="Something went wrong. Try re-submitting the form, or come back later and try-again"
-              />
+              >
+                Something went wrong. Try re-submitting the form, or come back
+                later and try-again
+              </Message>
             ),
           });
         }

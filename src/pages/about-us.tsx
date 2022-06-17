@@ -41,6 +41,7 @@ function FounderInfo() {
       <img
         className="h-[320px] w-auto -translate-y-3 md:h-[calc(100vw_/_5)]  md:-translate-x-9"
         src="/panth.jpeg"
+        alt="Panth Patel"
       />
       <div className="mt-5">
         <h3 className="text-5xl font-bold text-white">Panth Patel</h3>
