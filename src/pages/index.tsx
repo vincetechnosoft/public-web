@@ -25,20 +25,16 @@ import contactUsData from "@/data/contactUs";
 const highlights = [
   {
     icon: (
-      <Map className="h-[26px] w-auto fill-indigo-600 stroke-white stroke-1 hover:fill-indigo-800" />
+      <Map className="h-[26px] w-auto fill-indigo-600 stroke-white stroke-1" />
     ),
     label: "India Based",
   },
   {
-    icon: (
-      <Clock className="h-7 w-auto fill-indigo-600 stroke-white hover:fill-indigo-800" />
-    ),
+    icon: <Clock className="h-7 w-auto fill-indigo-600 stroke-white" />,
     label: "Zero Downtime",
   },
   {
-    icon: (
-      <Zap className="h-6 w-auto fill-indigo-600 text-indigo-600 hover:fill-indigo-800 hover:text-indigo-800" />
-    ),
+    icon: <Zap className="h-6 w-auto fill-indigo-600 text-indigo-600" />,
     label: "Super Fast",
   },
 ];
