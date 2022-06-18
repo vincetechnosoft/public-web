@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-10 grid grid-cols-2 gap-x-20 gap-y-3 md:mt-0">
           {actions.map(({ text, to }) => (
-            <Link href={to}>
+            <Link key={text} href={to}>
               <a className="text-sm">{text}</a>
             </Link>
           ))}

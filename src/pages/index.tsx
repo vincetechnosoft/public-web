@@ -193,7 +193,7 @@ function ContactUs() {
         Book Free Consultation
       </h2>
       <div className="mx-5 mt-7 grid rounded-2xl shadow-2xl md:grid-cols-2 lg:mx-24">
-        <div className="rounded-t-2xl bg-[#00323F] py-9 pl-10 text-white md:rounded-l-2xl md:rounded-tr-none">
+        <div className="rounded-t-2xl bg-[#00323F] p-10 py-9 text-white md:rounded-l-2xl md:rounded-tr-none">
           <h4 className="mt-3 text-3xl">Contact Information</h4>
           <p className="mt-1">
             We are here for you in case any query or issue arises. Contact us
