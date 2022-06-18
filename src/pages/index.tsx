@@ -214,7 +214,7 @@ function ContactUs() {
           <h4 className="mt-6 text-3xl">Connect With Us</h4>
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {socialMedia.map((x, y) => (
-              <a target="_blank" key={y} href={x.link}>
+              <a rel="noreferrer" target="_blank" key={y} href={x.link}>
                 <x.icons className="h-5 md:h-auto" />
               </a>
             ))}
