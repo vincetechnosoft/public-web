@@ -1,37 +1,68 @@
 import HomeLayout from "layouts/home-layout";
-import { NextPageWithLayout } from "types";
 import careersData from "data/careers.json";
-import Button from "@/components/button";
+import Button, { buttonClass } from "@/components/button";
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import Message from "@/components/messages";
+import { NextPage } from "next";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 
-const Careers: NextPageWithLayout = () => {
+const Careers: NextPage = () => {
   const [selectedID, setID] = useState(0);
   const selectedInfo = careersData[selectedID];
   return (
-    <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
-      <h2 className="px-5 text-5xl font-extrabold md:px-24 md:text-6xl">
-        Careers
-      </h2>
-      <div className="mt-5 flex flex-wrap px-5 md:px-24">
-        {careersData.map(({ serviceName }, id) => (
-          <Button
-            key={id}
-            className="mr-2 mb-2"
-            variant={selectedID === id ? "outline" : "secondery"}
-            onClick={() => (selectedID === id ? null : setID(id))}
+    <HomeLayout>
+      <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
+        <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
+          Careers
+        </h2>
+        <div className="mx-5 mt-5 sm:hidden">
+          <label htmlFor="careers" className="block text-2xl">
+            Select DEPARTMENT
+          </label>
+          <select
+            id="careers"
+            className={"mt-2"}
+            onChange={(e) => setID(parseInt(e.target.value))}
           >
-            {serviceName}
-          </Button>
-        ))}
+            {careersData.map(({ serviceName }, id) => (
+              <option value={id} key={serviceName} className="mr-2 mb-2">
+                {serviceName}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="mx-5 mt-5 hidden flex-wrap sm:flex lg:mx-24">
+          {careersData.map(({ serviceName }, id) => (
+            <Link href="/careers#position" key={id}>
+              <a
+                className={
+                  (selectedID === id
+                    ? buttonClass.outline
+                    : buttonClass.secondery) + " mr-2 mb-2"
+                }
+                onClick={() => (selectedID === id ? null : setID(id))}
+              >
+                {serviceName}
+              </a>
+            </Link>
+          ))}
+        </div>
+        <div id="position" />
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <CareersInfo key={selectedInfo.id} selectedInfo={selectedInfo} />
+        </AnimatePresence>
+        <CareersForm />
       </div>
-      <CareersInfo selectedInfo={selectedInfo} />
-      <CareersForm />
-    </div>
+    </HomeLayout>
   );
 };
 
-Careers.getLayout = (page) => <HomeLayout>{page}</HomeLayout>;
+const variants = {
+  hidden: { opacity: 0, x: -200, y: 0 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: 100, y: 0 },
+};
 
 export default Careers;
 function CareersInfo({
@@ -47,7 +78,14 @@ function CareersInfo({
   };
 }) {
   return (
-    <div className="m-5 mt-9 rounded bg-white py-5 px-10 shadow-md  md:mx-24">
+    <motion.main
+      variants={variants} // Pass the variant object into Framer Motion
+      initial="hidden" // Set the initial state to variants.hidden
+      animate="enter" // Animated state to variants.enter
+      exit="exit" // Exit state (used later) to variants.exit
+      transition={{ type: "linear" }} // Set the transition to linear
+      className="m-5 mt-9 rounded bg-white py-5 px-10 shadow-md lg:mx-24"
+    >
       <h3 className="text-2xl font-bold">About the position</h3>
       <p className="ml-5 mt-5 text-base md:text-lg">{selectedInfo.position}</p>
       <h2 className="mt-9 text-3xl">What we are asking of you:</h2>
@@ -74,13 +112,13 @@ function CareersInfo({
         Vince Techno Soft Internship. We recognize and furbish your skills to
         your advantage and facilitate your growth alongside ours.
       </p>
-    </div>
+    </motion.main>
   );
 }
 
 interface FormData {
   email: string;
-  name: string;
+  fullName: string;
   phoneNumber: string;
   city: string;
   department: string;
@@ -91,10 +129,10 @@ interface FormData {
 interface State {
   loading: boolean;
   success?: boolean;
-  errorMessage?: JSX.Element | null;
+  errorMessage?: JSX.Element;
   error?: {
     email: string | null;
-    name: string | null;
+    fullName: string | null;
     phoneNumber: string | null;
     city: string | null;
     department: string | null;
@@ -105,37 +143,21 @@ interface State {
 
 const className = {
   div: "mb-2 mr-2",
-  lable: "mb-2 block text-base font-bold uppercase tracking-wide text-gray-700",
-  input(err?: string | null) {
-    return `
-    mb-3 block rounded border-2 
-    ${
-      err
-        ? "border-red-500"
-        : `focus:border-indigo-500 ${err === null && "border-green-500"}`
-    } 
-    ${err !== null && "bg-gray-200"} 
-    py-3 px-4 w-full leading-tight text-gray-700 focus:bg-white focus:outline-none`;
-  },
-  select(err?: string | null) {
-    return this.input(err);
-  },
-  fileInput(err?: string | null) {
-    return `
-    ${err === undefined && "border-black"}
-      ${this.input(err)}
-      pl-1 pt-1 pb-1 file:h-15 file:text-white file:py-2 file:px-6 file:rounded file:bg-black file:border-none
-    `;
+  lable: "",
+  inputErr(err?: string | null) {
+    return err
+      ? "border-red-500"
+      : `focus:border-indigo-500 ${err === null && "border-green-500"}`;
   },
   err(err?: string | null) {
-    return <p className="text-base italic text-red-500">{err}</p>;
+    return <p className="text-base italic text-red-500 duration-150">{err}</p>;
   },
 };
 
 function CareersForm() {
   const formData = useRef<FormData>({
     email: "",
-    name: "",
+    fullName: "",
     phoneNumber: "",
     city: "",
     department: careersData[0].serviceName,
@@ -146,35 +168,16 @@ function CareersForm() {
   const onChange = useCallback(function ({
     target: { id, value, files },
   }: ChangeEvent<HTMLInputElement & HTMLSelectElement>) {
-    switch (id as keyof FormData) {
-      case "email": {
-        formData.current.email = value;
-        break;
-      }
-      case "name": {
-        formData.current.name = value;
-        break;
-      }
-      case "phoneNumber": {
-        formData.current.phoneNumber = value;
-        break;
-      }
-      case "city": {
-        formData.current.city = value;
-        break;
-      }
-      case "department": {
-        formData.current.department = value;
-        break;
-      }
-      case "portfolio": {
-        formData.current.portfolio = files?.item(0) ?? undefined;
-        break;
-      }
-      case "cv": {
-        formData.current.cv = files?.item(0) ?? undefined;
-        break;
-      }
+    if (
+      id === "email" ||
+      id === "fullName" ||
+      id === "phoneNumber" ||
+      id === "city" ||
+      id === "department"
+    ) {
+      formData.current[id] = value;
+    } else if (id === "portfolio" || id === "cv") {
+      formData.current[id] = files?.item(0) ?? undefined;
     }
   },
   []);
@@ -185,13 +188,13 @@ function CareersForm() {
       cv: null,
       department: null,
       email: null,
-      name: null,
+      fullName: null,
       phoneNumber: null,
       portfolio: null,
     };
     const { email, city, department, cv, portfolio } = formData.current;
     const phoneNumber = formData.current.phoneNumber.replaceAll(" ", "");
-    const name = formData.current.name.trim();
+    const fullName = formData.current.fullName.trim();
     if (!email) {
       error.email = "Email is Required";
     } else if (
@@ -203,8 +206,11 @@ function CareersForm() {
     }
     if (!phoneNumber) {
       error.phoneNumber = "Phone Number is Required";
+    } else if (!phoneNumber.startsWith("+91")) {
+      error.phoneNumber =
+        "We are currently accepting Indian Candidates only (+91 XXXXX XXXXX)";
     } else if (!/^\+[1-9]\d{10,14}$/.test(phoneNumber)) {
-      error.phoneNumber = "Given input is not valid (eg: +91 55555 00000)";
+      error.phoneNumber = "Given input is not valid (eg: +91 XXXXX XXXXX)";
     }
     if (!city) {
       error.city = "City is Required";
@@ -214,23 +220,29 @@ function CareersForm() {
     if (!department) {
       error.department = "Choose a Department to work in";
     }
-    if (!name) {
-      error.name = "Name is Required";
+    if (!fullName) {
+      error.fullName = "Name is Required";
     } else {
-      const a = name.split(" ");
+      const a = fullName.split(" ");
       if (a.length !== 2 || !a[0] || !a[1]) {
-        error.name = 'Formate: "FirstName<space>LastName"';
+        error.fullName = 'Formate: "FirstName<space>LastName"';
       }
     }
 
     if (!cv) {
       error.cv = "CV is Required";
+    } else if (cv.type !== "application/pdf") {
+      error.cv = "File must be in .pdf formate";
     } else if (cv.size / (1024 * 1024) > 5) {
       error.cv = "File size must be less then 5MB";
     }
 
-    if (portfolio && portfolio.size / (1024 * 1024) > 5) {
-      error.portfolio = "File size must be less then 5MB";
+    if (portfolio) {
+      if (portfolio.size / (1024 * 1024) > 5) {
+        error.portfolio = "File size must be less then 5MB";
+      } else if (portfolio.type !== "application/pdf") {
+        error.portfolio = "File must be in .pdf formate";
+      }
     }
     if (Object.values(error).find((x) => typeof x === "string") === undefined) {
       console.log(formData.current);
@@ -240,9 +252,9 @@ function CareersForm() {
         cv: cv!,
         department,
         email,
-        name,
+        fullName,
         phoneNumber,
-        portfolio: portfolio,
+        portfolio,
       }).then(
         function () {
           setState({ error, loading: false, success: true });
@@ -269,164 +281,163 @@ function CareersForm() {
     }
   }, []);
   return (
-    <div className="relative">
-      <form
-        onSubmit={onSubmit}
-        className="m-5 mt-9 rounded-lg bg-white py-5 px-10 shadow-lg md:mx-24"
+    <form
+      onSubmit={onSubmit}
+      className="m-5 mt-9 rounded-lg bg-white py-5 px-10 shadow-lg lg:mx-24"
+    >
+      <h3 className="mb-9 text-3xl">Join our team</h3>
+      {success ? (
+        <Message type="success" title="Form Submited Successfully">
+          Our team will contact you with in 3 to 5 business day.
+          <br /> Till then check out our #Solution, #Tutorials and follow us on
+          Other Platforms for new Updates!
+        </Message>
+      ) : (
+        errorMessage
+      )}
+      <div
+        className={`grid md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-6 ${
+          loading && "opacity-25"
+        }`}
       >
-        <h3 className="mb-9 text-3xl">Join our team</h3>
-        {errorMessage}
-        {success && (
-          <Message type="success" title="Form Submited Successfully">
-            Our team will contact you with in 3 to 5 business day.
-            <br /> Till then check out our #Solution, #Tutorials and follow us
-            on Other Platforms for new Updates!
-          </Message>
-        )}
-        <div
-          className={`grid md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-6 ${
-            loading && "opacity-25"
-          }`}
-        >
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="email">
-              Email
-            </label>
-            <input
-              disabled={loading || success}
-              required
-              className={className.input(error?.email)}
-              id="email"
-              placeholder="Active Email Address"
-              type="email"
-              inputMode="email"
-              onChange={onChange}
-            />
-            {className.err(error?.email)}
-          </div>
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="name">
-              Name
-            </label>
-            <input
-              disabled={loading || success}
-              required
-              className={className.input(error?.name)}
-              id="name"
-              placeholder="Your Good Name"
-              type="text"
-              onChange={onChange}
-            />
-            {className.err(error?.name)}
-          </div>
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="phoneNumber">
-              Contact Number
-            </label>
-            <input
-              disabled={loading || success}
-              required
-              className={className.input(error?.phoneNumber)}
-              placeholder="Your Active Phone Number"
-              inputMode="numeric"
-              id="phoneNumber"
-              type="text"
-              onChange={onChange}
-            />
-            {className.err(error?.phoneNumber)}
-          </div>
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="city">
-              City of Residence
-            </label>
-            <input
-              disabled={loading || success}
-              required
-              className={className.input(error?.city)}
-              placeholder="City"
-              id="city"
-              type="text"
-              onChange={onChange}
-            />
-            {className.err(error?.city)}
-          </div>
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="department">
-              Department
-            </label>
-            <select
-              defaultValue=""
-              disabled={loading || success}
-              required
-              placeholder="Select Department"
-              className={className.select(error?.department)}
-              id="department"
-              onChange={onChange}
-            >
-              <option value="" disabled hidden>
-                * Choose here
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="email">
+            Email
+          </label>
+          <input
+            disabled={loading || success}
+            required
+            className={className.inputErr(error?.email)}
+            id="email"
+            placeholder="Active Email Address"
+            type="email"
+            inputMode="email"
+            onChange={onChange}
+          />
+          {className.err(error?.email)}
+        </div>
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="fullName">
+            Full Name
+          </label>
+          <input
+            disabled={loading || success}
+            required
+            className={className.inputErr(error?.fullName)}
+            id="fullName"
+            placeholder="Your Good Name"
+            type="text"
+            onChange={onChange}
+          />
+          {className.err(error?.fullName)}
+        </div>
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="phoneNumber">
+            Contact Number
+          </label>
+          <input
+            disabled={loading || success}
+            required
+            className={className.inputErr(error?.phoneNumber)}
+            placeholder="Your Active Phone Number"
+            id="phoneNumber"
+            type="text"
+            onChange={onChange}
+          />
+          {className.err(error?.phoneNumber)}
+        </div>
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="city">
+            City of Residence
+          </label>
+          <input
+            disabled={loading || success}
+            required
+            className={className.inputErr(error?.city)}
+            placeholder="City"
+            id="city"
+            type="text"
+            onChange={onChange}
+          />
+          {className.err(error?.city)}
+        </div>
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="department">
+            Department
+          </label>
+          <select
+            defaultValue=""
+            disabled={loading || success}
+            required
+            placeholder="Select Department"
+            className={className.inputErr(error?.department)}
+            id="department"
+            onChange={onChange}
+          >
+            <option value="" disabled hidden>
+              * Choose here
+            </option>
+            {careersData.map(({ serviceName }, i) => (
+              <option key={i} value={serviceName}>
+                {serviceName}
               </option>
-              {careersData.map(({ serviceName }, i) => (
-                <option key={i} value={serviceName}>
-                  {serviceName}
-                </option>
-              ))}
-            </select>
-            {className.err(error?.department)}
-          </div>
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="cv">
-              Your CV
-            </label>
-            <input
-              disabled={loading || success}
-              required
-              onChange={onChange}
-              className={className.fileInput(error?.cv)}
-              id="cv"
-              type="file"
-              accept="application/pdf"
-            />
-            {className.err(error?.cv)}
-            <p className="-mt-1 text-sm italic text-gray-600">
-              <b className="uppercase">CV</b> File should only be in PDF format.
-            </p>
-          </div>
-          <div className={className.div}>
-            <label className={className.lable} htmlFor="portfolio">
-              Your Portfolio
-            </label>
-            <input
-              disabled={loading || success}
-              onChange={onChange}
-              className={className.fileInput(error?.department)}
-              id="portfolio"
-              type="file"
-              accept="application/pdf"
-            />
-            {className.err(error?.portfolio)}
-            <p className="-mt-1 text-sm italic text-gray-600">
-              Attach your previous projects
-              <br />
-              <b className="uppercase">Portfolio</b> File should only be in PDF
-              format
-            </p>
-          </div>
+            ))}
+          </select>
+          {className.err(error?.department)}
         </div>
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="cv">
+            Your CV
+          </label>
+          <input
+            disabled={loading || success}
+            required
+            onChange={onChange}
+            className={className.inputErr(error?.cv)}
+            id="cv"
+            type="file"
+            accept="application/pdf"
+          />
+          {className.err(error?.cv)}
+          <p className="text-sm italic text-gray-600">
+            <b className="uppercase">CV</b> File should only be in PDF format.
+          </p>
+        </div>
+        <div className={className.div}>
+          <label className={className.lable} htmlFor="portfolio">
+            Your Portfolio
+          </label>
+          <input
+            disabled={loading || success}
+            onChange={onChange}
+            className={className.inputErr(error?.department)}
+            id="portfolio"
+            type="file"
+            accept="application/pdf"
+          />
+          {className.err(error?.portfolio)}
+          <p className="text-sm italic text-gray-600">
+            Attach your previous projects
+            <br />
+            <b className="uppercase">Portfolio</b> File should only be in PDF
+            format
+          </p>
+        </div>
+      </div>
 
-        <div className="flex justify-end">
-          <Button loading={loading} disabled={success} type="submit">
-            Submit
-          </Button>
-        </div>
-      </form>
-    </div>
+      <div className="flex justify-end">
+        <Button loading={loading} disabled={success} type="submit">
+          Submit
+        </Button>
+      </div>
+    </form>
   );
 }
+let i = 0;
 
 function sendData(data: {
   email: string;
-  name: string;
+  fullName: string;
   phoneNumber: string;
   city: string;
   department: string;
@@ -434,6 +445,6 @@ function sendData(data: {
   cv: File;
 }) {
   return new Promise<void>((resolve, reject) =>
-    setTimeout(Math.random() < 0.5 ? resolve : reject, 1000)
+    setTimeout(i++ % 2 ? resolve : reject, 1000)
   );
 }

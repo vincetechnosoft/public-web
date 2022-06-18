@@ -1,9 +1,21 @@
+import Navbar from "@/components/navbar";
+import { AnimatePresence } from "framer-motion";
+import { AppProps } from "next/app";
 import "styles/globals.css";
-import { EnhancedApp } from "types";
 
-function MyApp({ Component, pageProps }: EnhancedApp) {
-  const getLayout = Component.getLayout || ((page) => page);
-  return <>{getLayout(<Component {...pageProps} />)}</>;
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <div className="scroll-smooth bg-stone-100">
+      <Navbar />
+      <AnimatePresence
+        exitBeforeEnter
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
+        <Component {...pageProps} />
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export default MyApp;

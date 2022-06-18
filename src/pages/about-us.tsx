@@ -1,24 +1,24 @@
 import HomeLayout from "layouts/home-layout";
-import { NextPageWithLayout } from "types";
+import { NextPage } from "next";
 
-const AboutUs: NextPageWithLayout = () => {
+const AboutUs: NextPage = () => {
   return (
-    <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
-      <h2 className="mx-5 text-5xl font-extrabold md:mx-24 md:text-6xl">
-        About Us
-      </h2>
-      <CompneyInfo />
-      <FounderInfo />
-    </div>
+    <HomeLayout>
+      <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
+        <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
+          About Us
+        </h2>
+        <CompneyInfo />
+        <FounderInfo />
+      </div>
+    </HomeLayout>
   );
 };
-
-AboutUs.getLayout = (page) => <HomeLayout>{page}</HomeLayout>;
 
 export default AboutUs;
 function CompneyInfo() {
   return (
-    <p className="mx-5 mt-5 text-lg md:mx-24 md:text-2xl">
+    <p className="mx-5 mt-5 text-lg md:text-2xl lg:mx-24">
       Vince Techno Soft Provides Business Software Solutions which are
       customized and generic to render and solve the extensive mundane problems
       related to inventory management.
@@ -37,7 +37,7 @@ function CompneyInfo() {
 
 function FounderInfo() {
   return (
-    <div className="mx-5 mt-10 bg-[#00323F] p-5 pt-0 md:mx-24 md:flex">
+    <div className="mx-5 mt-10 bg-[#00323F] p-5 pt-0 md:flex lg:mx-24">
       <img
         className="h-[320px] w-auto -translate-y-3 md:h-[calc(100vw_/_5)]  md:-translate-x-9"
         src="/panth.jpeg"

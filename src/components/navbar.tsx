@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "./button";
+import { buttonClass } from "./button";
 import Link from "next/link";
-import { Send, Menu, X } from "react-feather";
+import { Send, Menu } from "react-feather";
 
 const links = [
   {
@@ -25,7 +25,7 @@ const links = [
 const Navbar: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   return (
-    <nav className="mx-auto flex h-16 w-full items-center justify-between px-16 md:max-w-7xl">
+    <nav className="mx-auto flex h-16 w-full items-center justify-between px-8 md:max-w-7xl">
       <div className="flex w-2/3 md:w-auto md:justify-center">
         <Link href="/" passHref>
           <a className="focus:text-rose-500 focus:outline-none">Logo</a>
@@ -44,13 +44,16 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
         <div className="justify-center md:flex">
-          <Button leadingIcon={<Send className="mr-2 h-[17px] w-auto" />}>
-            Contact Us
-          </Button>
+          <Link href={"/#contact-us"}>
+            <a className={buttonClass.filled}>
+              <Send className="mr-2 h-[17px] w-auto" />
+              Contact Us
+            </a>
+          </Link>
         </div>
       </div>
-      <button className="block md:hidden" onClick={() => setOpen((x) => !x)}>
-        {open ? <X className="h-6 w-auto" /> : <Menu className="h-6 w-auto" />}
+      <button className="block md:hidden" onClick={() => setOpen(true)}>
+        <Menu className="h-6 w-auto" />
       </button>
       {open && (
         <div
@@ -65,16 +68,18 @@ const Navbar: React.FC = () => {
       >
         {links.map((link) => (
           <Link href={link.path} key={link.path} passHref>
-            <a className="ml-5 mr-32 mt-5 block">{link.label}</a>
+            <a onClick={() => setOpen(false)} className="ml-5 mr-32 mt-5 block">
+              {link.label}
+            </a>
           </Link>
         ))}
         <div className="mt-5 pr-10">
-          <Button
-            className="ml-5"
-            leadingIcon={<Send className="mr-2 h-[18px] w-auto" />}
-          >
-            Contact Us
-          </Button>
+          <Link href={"/#contact-us"}>
+            <a onClick={() => setOpen(false)} className={buttonClass.filled}>
+              <Send className="mr-2 h-[17px] w-auto" />
+              Contact Us
+            </a>
+          </Link>
         </div>
       </div>
     </nav>

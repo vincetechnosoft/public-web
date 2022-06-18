@@ -50,10 +50,9 @@ const className = {
 
 function Message(props: Props) {
   const [show, setShow] = useState(true);
-  if (!show) return null;
   const styles = className[props.type];
   return (
-    <div id="alert-additional-content-3" className={styles.main} role="alert">
+    <div hidden={!show} className={styles.main} role="alert">
       <div className="flex items-center">
         {styles.icon}
         <h3 className={styles.title}>{props.title}</h3>
