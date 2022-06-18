@@ -1,5 +1,5 @@
 import React from "react";
-import { buttonClass } from "./button";
+import { buttonClass } from "../components/button";
 import Link from "next/link";
 import { Send, Menu } from "react-feather";
 

@@ -1,11 +1,12 @@
-import Navbar from "@/components/navbar";
+import Footer from "@/layouts/footer";
+import Navbar from "@/layouts/navbar";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="scroll-smooth bg-stone-100">
+    <>
       <Navbar />
       <AnimatePresence
         exitBeforeEnter
@@ -14,7 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <Component {...pageProps} />
       </AnimatePresence>
-    </div>
+      <Footer />
+    </>
   );
 }
 

@@ -3,7 +3,7 @@ import { NextPage } from "next";
 
 const AboutUs: NextPage = () => {
   return (
-    <HomeLayout>
+    <HomeLayout key="about-us">
       <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
         <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
           About Us

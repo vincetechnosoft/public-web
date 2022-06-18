@@ -15,7 +15,7 @@
         rounded
         border-2
         disabled:text-gray-400
-        focus:border-indigo-500
+        focus:border-indigo-700
         bg-gray-200
         py-3
         px-4
@@ -29,7 +29,7 @@
         @apply
         duration-150
         border-gray-500
-        focus:border-indigo-500
+        focus:border-indigo-700
         bg-gray-200
         text-gray-700
         rounded
@@ -62,5 +62,6 @@
     }
 }
 html {
+    @apply bg-stone-100;
     scroll-behavior: smooth;
 }

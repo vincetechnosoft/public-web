@@ -6,11 +6,6 @@ import {
   ChevronDown,
   ChevronUp,
   Mail,
-  Facebook,
-  Linkedin,
-  Instagram,
-  Twitter,
-  Youtube,
   PhoneCall,
 } from "react-feather";
 import React, {
@@ -24,27 +19,33 @@ import Button, { buttonClass } from "@/components/button";
 import Link from "next/link";
 import Message from "@/components/messages";
 import { NextPage } from "next";
+import { AnimatePresence, motion } from "framer-motion";
+import contactUsData from "@/data/contactUs";
 
 const highlights = [
   {
     icon: (
-      <Map className="h-[26px] w-auto fill-indigo-400 stroke-white stroke-1" />
+      <Map className="h-[26px] w-auto fill-indigo-600 stroke-white stroke-1 hover:fill-indigo-800" />
     ),
     label: "India Based",
   },
   {
-    icon: <Clock className="h-7 w-auto fill-indigo-400 stroke-white" />,
+    icon: (
+      <Clock className="h-7 w-auto fill-indigo-600 stroke-white hover:fill-indigo-800" />
+    ),
     label: "Zero Downtime",
   },
   {
-    icon: <Zap className="h-6 w-auto fill-indigo-400 text-indigo-400" />,
+    icon: (
+      <Zap className="h-6 w-auto fill-indigo-600 text-indigo-600 hover:fill-indigo-800 hover:text-indigo-800" />
+    ),
     label: "Super Fast",
   },
 ];
 
 const Home: NextPage = () => {
   return (
-    <HomeLayout>
+    <HomeLayout key="landing">
       <div className="pb-10">
         <Starters />
         <SoftwareInfo />
@@ -56,24 +57,6 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const softwareData = [
-  {
-    title: "Web Development",
-    content:
-      "Using UI/UX designed by our designing team, or provided by the clients, we develop websites that are highly secured and developed using the best coding practices. The end-result is a product that is responsive and easy-to-use, which gives quality and affordability. An SEO friendly, scalable, and secure website is Grownited’s assurance.",
-  },
-  {
-    title: "Application Development",
-    content:
-      "Share your ideas with us and get outstanding services with us, for both single and cross-platform applications. We yield mobile apps that integrate machine learning analytics, API integration, and personalization. We ensure economies of scale without sacrificing greater performance.",
-  },
-  {
-    title: "Maintenance and upgrades",
-    content:
-      "Just creating websites and apps for our clients is not enough! We provide maintenance and upgrades for them to guarantee that the clients’ digital products stay relevant to the customers’ needs, remain bug-free and are constantly authentic. As the market evolves and newer technologies pour in, the products can be upgraded to stay on top of the market.",
-  },
-];
-
 function Starters() {
   return (
     <div className="mx-5 mt-7 flex items-center justify-between md:mt-0 md:flex md:min-h-[calc(80vh_-_4rem)]">
@@ -81,7 +64,7 @@ function Starters() {
         <h2 className="mt-5 text-5xl font-extrabold md:text-6xl">
           Problems with Inventory management?
           <br />
-          <span className="mt-5 text-3xl uppercase text-indigo-500 md:text-4xl">
+          <span className="mt-5 text-3xl uppercase text-indigo-700 md:text-4xl">
             Just a knock away!
           </span>
         </h2>
@@ -115,11 +98,29 @@ function Starters() {
     </div>
   );
 }
+const softwareData = [
+  {
+    title: "Web Development",
+    content:
+      "Using UI/UX designed by our designing team, or provided by the clients, we develop websites that are highly secured and developed using the best coding practices. The end-result is a product that is responsive and easy-to-use, which gives quality and affordability. An SEO friendly, scalable, and secure website is Grownited’s assurance.",
+  },
+  {
+    title: "Application Development",
+    content:
+      "Share your ideas with us and get outstanding services with us, for both single and cross-platform applications. We yield mobile apps that integrate machine learning analytics, API integration, and personalization. We ensure economies of scale without sacrificing greater performance.",
+  },
+  {
+    title: "Maintenance and upgrades",
+    content:
+      "Just creating websites and apps for our clients is not enough! We provide maintenance and upgrades for them to guarantee that the clients’ digital products stay relevant to the customers’ needs, remain bug-free and are constantly authentic. As the market evolves and newer technologies pour in, the products can be upgraded to stay on top of the market.",
+  },
+];
 
 function SoftwareInfo() {
   const [showInfo, setShowInfo] = useState(false);
   return (
     <>
+      <div id="software" className="mt-7" />
       <div className="mx-5 mt-7 flex items-center justify-between md:mt-0 md:flex lg:mx-24">
         <div className="hidden  w-1/2 lg:block">
           <img
@@ -129,10 +130,7 @@ function SoftwareInfo() {
           />
         </div>
         <div className="self-centrer mx-auto w-full space-y-7 text-center md:space-y-10  lg:w-1/2">
-          <h3
-            id="software"
-            className="flex justify-center text-4xl md:text-5xl"
-          >
+          <h3 className="flex justify-center text-4xl md:text-5xl">
             <Link href={showInfo ? "/#software" : "/#software-info"}>
               <a
                 className={buttonClass.text}
@@ -159,34 +157,34 @@ function SoftwareInfo() {
           </p>
         </div>
       </div>
-      <div
-        id="software-info"
-        className={`${
-          showInfo ? "grid" : "hidden"
-        } mx-5 mt-5 gap-4 lg:mx-24  lg:grid-cols-3`}
-      >
-        {softwareData.map(({ title, content }, i) => (
-          <div className="rounded-lg bg-white shadow-lg" key={i}>
-            <div className="flex justify-center rounded-t-lg bg-black px-2 pt-3 pb-1 lg:h-24 xl:h-auto">
-              <h3 className="mb-5 text-2xl text-white md:text-3xl">{title}</h3>
-            </div>
-            <p className="p-4 text-sm text-black first-letter:text-4xl md:text-base">
-              {content}
-            </p>
-          </div>
-        ))}
-      </div>
+      <div id="software-info" />
+      <AnimatePresence presenceAffectsLayout exitBeforeEnter initial={false}>
+        {showInfo && (
+          <motion.div
+            initial={{ opacity: 0, x: "-100vw", y: 0 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            exit={{ opacity: 0, x: 0, y: -200 }}
+            transition={{ type: "spring" }} // Set the transition to linear
+            className="mx-5 mt-5 grid gap-4 lg:mx-24 lg:grid-cols-3"
+          >
+            {softwareData.map(({ title, content }, i) => (
+              <div className="rounded-lg bg-white shadow-lg" key={i}>
+                <div className="flex justify-center rounded-t-lg bg-black px-2 pt-3 pb-1 lg:h-24 xl:h-auto">
+                  <h3 className="mb-5 text-2xl text-white md:text-3xl">
+                    {title}
+                  </h3>
+                </div>
+                <p className="p-4 text-sm text-black first-letter:text-4xl md:text-base">
+                  {content}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
-
-const socialMedia = [
-  { icons: Facebook, link: "https://www.facebook.com/" },
-  { icons: Linkedin, link: "https://www.linkedin.com/" },
-  { icons: Instagram, link: "https://www.instagram.com/" },
-  { icons: Twitter, link: "https://twitter.com/" },
-  { icons: Youtube, link: "https://www.youtube.com/" },
-];
 
 function ContactUs() {
   return (
@@ -203,19 +201,19 @@ function ContactUs() {
           </p>
           <div className="mt-6 flex space-x-3">
             <Mail className="h-[1.24rem] md:h-5" />
-            <span>support@grownited.com</span>
+            <span>{contactUsData.contact.email}</span>
           </div>
           <div className="mt-1 flex space-x-3">
             <PhoneCall className="h-[1.24rem] md:h-5" />
-            <span>+91 91733 73578</span>
+            <span>{contactUsData.contact.phone}</span>
           </div>
           <h4 className="mt-6 text-3xl">Address</h4>
-          <p className="mt-1">* Still looking for a location</p>
+          <p className="mt-1">{contactUsData.address}</p>
           <h4 className="mt-6 text-3xl">Connect With Us</h4>
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
-            {socialMedia.map((x, y) => (
-              <a rel="noreferrer" target="_blank" key={y} href={x.link}>
-                <x.icons className="h-5 md:h-auto" />
+            {contactUsData.socialMedia.map(({ Icon, link }, y) => (
+              <a rel="noreferrer" target="_blank" key={y} href={link}>
+                <Icon className="h-5 stroke-neutral-200 md:h-auto" />
               </a>
             ))}
           </div>
@@ -248,9 +246,7 @@ const className = {
   div: "mb-2 mr-2",
   lable: "",
   inputErr(err?: string | null) {
-    return err
-      ? "border-red-500"
-      : `focus:border-indigo-500 ${err === null && "border-green-500"}`;
+    return err ? "border-red-500" : `${err === null && "border-green-500"}`;
   },
   err(err?: string | null) {
     return <p className="text-base italic text-red-500 duration-150">{err}</p>;

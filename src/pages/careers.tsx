@@ -1,5 +1,5 @@
 import HomeLayout from "layouts/home-layout";
-import careersData from "data/careers.json";
+import careersData from "@/data/careers";
 import Button, { buttonClass } from "@/components/button";
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import Message from "@/components/messages";
@@ -11,7 +11,7 @@ const Careers: NextPage = () => {
   const [selectedID, setID] = useState(0);
   const selectedInfo = careersData[selectedID];
   return (
-    <HomeLayout>
+    <HomeLayout key="careers">
       <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
         <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
           Careers
@@ -145,9 +145,7 @@ const className = {
   div: "mb-2 mr-2",
   lable: "",
   inputErr(err?: string | null) {
-    return err
-      ? "border-red-500"
-      : `focus:border-indigo-500 ${err === null && "border-green-500"}`;
+    return err ? "border-red-500" : `${err === null && "border-green-500"}`;
   },
   err(err?: string | null) {
     return <p className="text-base italic text-red-500 duration-150">{err}</p>;
