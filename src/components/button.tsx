@@ -15,7 +15,7 @@ const className = {
     "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg border border-base1-border py-2 px-4 -text-base1-page duration-150 hover:bg-base1-darker disabled:bg-base1-darker/50 disabled:-text-base1-disabled",
   text: "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg  py-2 px-4 -text-base1-page duration-150 hover:bg-base1-darker disabled:bg-base1-darker/50 disabled:-text-base1-disabled",
   secondery:
-    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg bg-accent2-base py-2 px-4 -text-accent2-base duration-150 hover:bg-accent2-hover disabled:bg-accent2-disabled",
+    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg bg-accent2 py-2 px-4 -text-accent2 duration-150 hover:bg-accent2-hover disabled:bg-accent2-disabled",
 };
 
 export const buttonClass = className;

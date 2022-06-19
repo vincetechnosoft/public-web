@@ -2,6 +2,7 @@ import Footer from "@/layouts/footer";
 import Navbar from "@/layouts/navbar";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
+import { useState } from "react";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {

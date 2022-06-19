@@ -13,7 +13,6 @@ const Careers: NextPage = () => {
   ) {
     x(typeof e === "number" ? e : parseInt(e.target.value));
     setTimeout(function () {
-      console.log(document.getElementById("position"));
       document.getElementById("position")?.scrollIntoView();
     }, 50);
   },
