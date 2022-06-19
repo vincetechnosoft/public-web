@@ -10,12 +10,12 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const className = {
   filled:
-    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black border-indigo-500 items-center rounded-lg bg-indigo-700 py-2 px-4 text-white duration-150 hover:bg-indigo-800 disabled:bg-indigo-400",
+    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page border-accent1 items-center rounded-lg bg-accent1 py-2 px-4 -text-accent1 duration-150 hover:bg-accent1-hover disabled:bg-accent1-disabled",
   outline:
-    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black items-center rounded-lg border border-stone-300 py-2 px-4 text-black duration-150 hover:bg-stone-200 disabled:bg-stone-200/50 disabled:text-stone-400",
-  text: "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black items-center rounded-lg  py-2 px-4 text-black duration-150 hover:bg-stone-200 disabled:bg-stone-200/50 disabled:text-stone-400",
+    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg border border-base1-border py-2 px-4 -text-base1-page duration-150 hover:bg-base1-darker disabled:bg-base1-darker/50 disabled:-text-base1-disabled",
+  text: "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg  py-2 px-4 -text-base1-page duration-150 hover:bg-base1-darker disabled:bg-base1-darker/50 disabled:-text-base1-disabled",
   secondery:
-    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black items-center rounded-lg bg-emerald-800 py-2 px-4 text-white duration-150 hover:bg-emerald-900 disabled:bg-emerald-400",
+    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg bg-accent2-base py-2 px-4 -text-accent2-base duration-150 hover:bg-accent2-hover disabled:bg-accent2-disabled",
 };
 
 export const buttonClass = className;

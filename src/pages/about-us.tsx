@@ -4,7 +4,7 @@ import { NextPage } from "next";
 const AboutUs: NextPage = () => {
   return (
     <HomeLayout key="about-us">
-      <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
+      <div className="py-7 md:mt-0">
         <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
           About Us
         </h2>
@@ -37,16 +37,16 @@ function CompneyInfo() {
 
 function FounderInfo() {
   return (
-    <div className="mx-5 mt-10 bg-[#00323F] p-5 pt-0 md:flex lg:mx-24">
+    <div className="bg-base2 -text-base2 mx-5 mt-10 p-5 pt-0 md:flex lg:mx-24">
       <img
         className="h-[320px] w-auto -translate-y-3 md:h-[calc(100vw_/_5)]  md:-translate-x-9"
         src="/panth.jpeg"
         alt="Panth Patel"
       />
       <div className="mt-5">
-        <h3 className="text-5xl font-bold text-white">Panth Patel</h3>
-        <h4 className="mt-3 text-3xl text-white">Founder / CEO</h4>
-        <p className="mt-9 text-lg text-white  md:text-xl">
+        <h3 className="text-5xl font-bold">Panth Patel</h3>
+        <h4 className="mt-3 text-3xl">Founder / CEO</h4>
+        <p className="mt-9 text-lg  md:text-xl">
           Panth is a bold and assertive leader who is a visionary in
           technological field and always finds ways to solve day-to-day problems
           through software’s, Panth has a great interest in business and aims to

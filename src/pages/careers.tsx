@@ -1,14 +1,23 @@
 import HomeLayout from "layouts/home-layout";
 import careersData from "@/data/careers";
-import Button, { buttonClass } from "@/components/button";
+import Button from "@/components/button";
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import Message from "@/components/messages";
 import { NextPage } from "next";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 
 const Careers: NextPage = () => {
-  const [selectedID, setID] = useState(0);
+  const [selectedID, x] = useState(0);
+  const setID = useCallback(function (
+    e: ChangeEvent<HTMLSelectElement> | number
+  ) {
+    x(typeof e === "number" ? e : parseInt(e.target.value));
+    setTimeout(function () {
+      console.log(document.getElementById("position"));
+      document.getElementById("position")?.scrollIntoView();
+    }, 50);
+  },
+  []);
   const selectedInfo = careersData[selectedID];
   return (
     <HomeLayout key="careers">
@@ -20,11 +29,7 @@ const Careers: NextPage = () => {
           <label htmlFor="careers" className="block text-2xl">
             Select DEPARTMENT
           </label>
-          <select
-            id="careers"
-            className={"mt-2"}
-            onChange={(e) => setID(parseInt(e.target.value))}
-          >
+          <select id="careers" className={"mt-2"} onChange={setID}>
             {careersData.map(({ serviceName }, id) => (
               <option value={id} key={serviceName} className="mr-2 mb-2">
                 {serviceName}
@@ -34,18 +39,15 @@ const Careers: NextPage = () => {
         </div>
         <div className="mx-5 mt-5 hidden flex-wrap sm:flex lg:mx-24">
           {careersData.map(({ serviceName }, id) => (
-            <Link href="/careers#position" key={id}>
-              <a
-                className={
-                  (selectedID === id
-                    ? buttonClass.outline
-                    : buttonClass.secondery) + " mr-2 mb-2"
-                }
-                onClick={() => (selectedID === id ? null : setID(id))}
-              >
-                {serviceName}
-              </a>
-            </Link>
+            <Button
+              variant={selectedID === id ? "outline" : "secondery"}
+              disabled={selectedID === id}
+              className="mr-2 mb-2 disabled:font-semibold disabled:-text-base1-none"
+              key={id}
+              onClick={() => setID(id)}
+            >
+              {serviceName}
+            </Button>
           ))}
         </div>
         <div id="position" />
@@ -84,7 +86,7 @@ function CareersInfo({
       animate="enter" // Animated state to variants.enter
       exit="exit" // Exit state (used later) to variants.exit
       transition={{ type: "linear" }} // Set the transition to linear
-      className="m-5 mt-9 rounded bg-white py-5 px-10 shadow-md lg:mx-24"
+      className="m-5 mt-9 rounded bg-base1-none py-5 px-10 -text-base1-none shadow-md lg:mx-24"
     >
       <h3 className="text-2xl font-bold">About the position</h3>
       <p className="ml-5 mt-5 text-base md:text-lg">{selectedInfo.position}</p>
@@ -143,12 +145,10 @@ interface State {
 
 const className = {
   div: "mb-2 mr-2",
-  lable: "",
   inputErr(err?: string | null) {
-    return err ? "border-red-500" : `${err === null && "border-green-500"}`;
-  },
-  err(err?: string | null) {
-    return <p className="text-base italic text-red-500 duration-150">{err}</p>;
+    return err
+      ? "border-feedback-error"
+      : `${err === null && "border-feedback-success"}`;
   },
 };
 
@@ -281,7 +281,7 @@ function CareersForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="m-5 mt-9 rounded-lg bg-white py-5 px-10 shadow-lg lg:mx-24"
+      className="m-5 mt-9 rounded-lg bg-base1-none py-5 px-10 -text-base1-none shadow-lg lg:mx-24"
     >
       <h3 className="mb-9 text-3xl">Join our team</h3>
       {success ? (
@@ -299,9 +299,7 @@ function CareersForm() {
         }`}
       >
         <div className={className.div}>
-          <label className={className.lable} htmlFor="email">
-            Email
-          </label>
+          <label htmlFor="email">Email</label>
           <input
             disabled={loading || success}
             required
@@ -312,12 +310,10 @@ function CareersForm() {
             inputMode="email"
             onChange={onChange}
           />
-          {className.err(error?.email)}
+          <p className="italic text-feedback-error">{error?.email}</p>
         </div>
         <div className={className.div}>
-          <label className={className.lable} htmlFor="fullName">
-            Full Name
-          </label>
+          <label htmlFor="fullName">Full Name</label>
           <input
             disabled={loading || success}
             required
@@ -327,12 +323,10 @@ function CareersForm() {
             type="text"
             onChange={onChange}
           />
-          {className.err(error?.fullName)}
+          <p className="italic text-feedback-error">{error?.fullName}</p>
         </div>
         <div className={className.div}>
-          <label className={className.lable} htmlFor="phoneNumber">
-            Contact Number
-          </label>
+          <label htmlFor="phoneNumber">Contact Number</label>
           <input
             disabled={loading || success}
             required
@@ -342,12 +336,10 @@ function CareersForm() {
             type="text"
             onChange={onChange}
           />
-          {className.err(error?.phoneNumber)}
+          <p className="italic text-feedback-error">{error?.phoneNumber}</p>
         </div>
         <div className={className.div}>
-          <label className={className.lable} htmlFor="city">
-            City of Residence
-          </label>
+          <label htmlFor="city">City of Residence</label>
           <input
             disabled={loading || success}
             required
@@ -357,12 +349,10 @@ function CareersForm() {
             type="text"
             onChange={onChange}
           />
-          {className.err(error?.city)}
+          <p className="italic text-feedback-error">{error?.city}</p>
         </div>
         <div className={className.div}>
-          <label className={className.lable} htmlFor="department">
-            Department
-          </label>
+          <label htmlFor="department">Department</label>
           <select
             defaultValue=""
             disabled={loading || success}
@@ -381,12 +371,10 @@ function CareersForm() {
               </option>
             ))}
           </select>
-          {className.err(error?.department)}
+          <p className="italic text-feedback-error">{error?.department}</p>
         </div>
         <div className={className.div}>
-          <label className={className.lable} htmlFor="cv">
-            Your CV
-          </label>
+          <label htmlFor="cv">Your CV</label>
           <input
             disabled={loading || success}
             required
@@ -396,14 +384,14 @@ function CareersForm() {
             type="file"
             accept="application/pdf"
           />
-          {className.err(error?.cv)}
-          <p className="text-sm italic text-gray-600">
-            <b className="uppercase">CV</b> File should only be in PDF format.
-          </p>
+          <p className="italic text-feedback-error">{error?.cv}</p>
         </div>
         <div className={className.div}>
-          <label className={className.lable} htmlFor="portfolio">
+          <label htmlFor="portfolio">
             Your Portfolio
+            <span className="ml-2 text-sm font-semibold -text-form-color-hint underline underline-offset-2">
+              Optional
+            </span>
           </label>
           <input
             disabled={loading || success}
@@ -413,18 +401,20 @@ function CareersForm() {
             type="file"
             accept="application/pdf"
           />
-          {className.err(error?.portfolio)}
-          <p className="text-sm italic text-gray-600">
+          <p className="italic text-feedback-error">{error?.portfolio}</p>
+          <p className="text-sm italic -text-form-color-hint">
             Attach your previous projects
-            <br />
-            <b className="uppercase">Portfolio</b> File should only be in PDF
-            format
           </p>
         </div>
       </div>
 
       <div className="flex justify-end">
-        <Button loading={loading} disabled={success} type="submit">
+        <Button
+          loading={loading}
+          disabled={success}
+          type="submit"
+          className="flex w-52 justify-center"
+        >
           Submit
         </Button>
       </div>

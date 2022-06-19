@@ -25,16 +25,16 @@ import contactUsData from "@/data/contactUs";
 const highlights = [
   {
     icon: (
-      <Map className="h-[26px] w-auto fill-indigo-600 stroke-white stroke-1" />
+      <Map className="fill-accent1 -stroke-accent1 h-[26px] w-auto stroke-1" />
     ),
     label: "India Based",
   },
   {
-    icon: <Clock className="h-7 w-auto fill-indigo-600 stroke-white" />,
+    icon: <Clock className="fill-accent1 -stroke-accent1 h-7 w-auto" />,
     label: "Zero Downtime",
   },
   {
-    icon: <Zap className="h-6 w-auto fill-indigo-600 text-indigo-600" />,
+    icon: <Zap className="fill-accent1 text-accent1 h-6 w-auto" />,
     label: "Super Fast",
   },
 ];
@@ -60,7 +60,7 @@ function Starters() {
         <h2 className="mt-5 text-5xl font-extrabold md:text-6xl">
           Problems with Inventory management?
           <br />
-          <span className="mt-5 text-3xl uppercase text-indigo-700 md:text-4xl">
+          <span className="text-accent1 mt-5 text-3xl uppercase md:text-4xl">
             Just a knock away!
           </span>
         </h2>
@@ -164,13 +164,14 @@ function SoftwareInfo() {
             className="mx-5 mt-5 grid gap-4 lg:mx-24 lg:grid-cols-3"
           >
             {softwareData.map(({ title, content }, i) => (
-              <div className="rounded-lg bg-white shadow-lg" key={i}>
-                <div className="flex justify-center rounded-t-lg bg-black px-2 pt-3 pb-1 lg:h-24 xl:h-auto">
-                  <h3 className="mb-5 text-2xl text-white md:text-3xl">
-                    {title}
-                  </h3>
+              <div
+                className="rounded-lg bg-base1-none -text-base1-none shadow-lg"
+                key={i}
+              >
+                <div className="flex justify-center rounded-t-lg bg-base2 px-2 pt-3 pb-1 -text-base2 lg:h-24 xl:h-auto">
+                  <h3 className="mb-5 text-2xl md:text-3xl">{title}</h3>
                 </div>
-                <p className="p-4 text-sm text-black first-letter:text-4xl md:text-base">
+                <p className="p-4 text-sm first-letter:text-4xl md:text-base">
                   {content}
                 </p>
               </div>
@@ -189,7 +190,7 @@ function ContactUs() {
         Book Free Consultation
       </h2>
       <div className="mx-5 mt-7 grid rounded-2xl shadow-2xl md:grid-cols-2 lg:mx-24">
-        <div className="rounded-t-2xl bg-[#00323F] p-10 py-9 text-white md:rounded-l-2xl md:rounded-tr-none">
+        <div className="rounded-t-2xl bg-base2 p-10 py-9 -text-base2 md:rounded-l-2xl md:rounded-tr-none">
           <h4 className="mt-3 text-3xl">Contact Information</h4>
           <p className="mt-1">
             We are here for you in case any query or issue arises. Contact us
@@ -209,7 +210,7 @@ function ContactUs() {
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {contactUsData.socialMedia.map(({ Icon, link }, y) => (
               <a rel="noreferrer" target="_blank" key={y} href={link}>
-                <Icon className="h-5 stroke-neutral-200 md:h-auto" />
+                <Icon className="h-5 -stroke-base2-dim md:h-auto" />
               </a>
             ))}
           </div>
@@ -239,13 +240,10 @@ interface State {
   };
 }
 const className = {
-  div: "mb-2 mr-2",
-  lable: "",
   inputErr(err?: string | null) {
-    return err ? "border-red-500" : `${err === null && "border-green-500"}`;
-  },
-  err(err?: string | null) {
-    return <p className="text-base italic text-red-500 duration-150">{err}</p>;
+    return err
+      ? "border-feedback-error"
+      : `${err === null && "border-feedback-success"}`;
   },
 };
 
@@ -302,7 +300,7 @@ function ContactUsForm() {
     }
     if (!message) {
       error.message = "Message is Required";
-    } else if (message.length < 10) {
+    } else if (message.length < 10 || message.split(" ").length < 10) {
       error.message = "Elaborate you message a bit";
     }
     if (!fullName) {
@@ -351,10 +349,14 @@ function ContactUsForm() {
     <form
       id="contact-us"
       onSubmit={onSubmit}
-      className="rounded-b-2xl bg-white py-5 px-10 md:rounded-r-2xl md:rounded-bl-none"
+      className="rounded-b-2xl bg-base1-none py-5 px-10 -text-base1-none md:rounded-r-2xl md:rounded-bl-none"
     >
       {success ? (
-        <Message type="success" title="Form Submited Successfully">
+        <Message
+          type="success"
+          showDismissButton
+          title="Form Submited Successfully"
+        >
           Our team will contact you with in 3 to 5 business day.
           <br /> Till then check out our #Solution, #Tutorials and follow us on
           Other Platforms for new Updates!
@@ -374,7 +376,9 @@ function ContactUsForm() {
             type="text"
             onChange={onChange}
           />
-          {className.err(error?.fullName)}
+          <p className="text-base italic text-feedback-error duration-150">
+            {error?.fullName}
+          </p>
         </div>
         <div>
           <label htmlFor="email">Email</label>
@@ -387,7 +391,9 @@ function ContactUsForm() {
             className={className.inputErr(error?.email)}
             onChange={onChange}
           />
-          {className.err(error?.email)}
+          <p className="text-base italic text-feedback-error duration-150">
+            {error?.email}
+          </p>
         </div>
         <div>
           <label htmlFor="phoneNumber">Contact Number</label>
@@ -400,7 +406,9 @@ function ContactUsForm() {
             type="text"
             onChange={onChange}
           />
-          {className.err(error?.phoneNumber)}
+          <p className="text-base italic text-feedback-error duration-150">
+            {error?.phoneNumber}
+          </p>
         </div>
         <div>
           <label htmlFor="message">Message</label>
@@ -412,11 +420,18 @@ function ContactUsForm() {
             placeholder="Message, explaining what you want from Us"
             onChange={onChange}
           />
-          {className.err(error?.message)}
+          <p className="text-base italic text-feedback-error duration-150">
+            {error?.message}
+          </p>
         </div>
       </div>
       <div className="mt-4 flex justify-end">
-        <Button loading={loading} disabled={success} type="submit">
+        <Button
+          loading={loading}
+          disabled={success}
+          type="submit"
+          className="flex w-52 justify-center"
+        >
           Submit
         </Button>
       </div>

@@ -14,8 +14,8 @@ const actions = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#00323F]">
-      <div className="mx-auto w-full grid-cols-2 justify-between p-5 py-16 text-white md:grid md:py-24 md:px-24 lg:flex">
+    <footer className="bg-base2 -text-base2">
+      <div className="mx-auto w-full grid-cols-2 justify-between p-5 py-16 md:grid md:py-24 md:px-24 lg:flex">
         <div>
           <div>Logo</div>
           <div className="mt-5 hidden text-left md:block lg:hidden">
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
               {contactUsData.socialMedia.map(({ Icon, link }, y) => (
                 <a rel="noreferrer" target="_blank" key={y} href={link}>
-                  <Icon className="h-5 stroke-neutral-200 md:h-auto" />
+                  <Icon className="h-5 -stroke-base2-dim md:h-auto" />
                 </a>
               ))}
             </div>
@@ -47,13 +47,13 @@ const Footer: React.FC = () => {
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {contactUsData.socialMedia.map(({ Icon, link }, y) => (
               <a rel="noreferrer" target="_blank" key={y} href={link}>
-                <Icon className="h-5 stroke-neutral-200 md:h-auto" />
+                <Icon className="h-5 -stroke-base2-dim md:h-auto" />
               </a>
             ))}
           </div>
         </div>
       </div>
-      <p className="border-t-2 py-5 text-center text-white">
+      <p className="text-white border-t-2 py-5 text-center">
         Copyright 2022 © Vince Technosoft. All Rights Reserved
       </p>
     </footer>

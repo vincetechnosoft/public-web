@@ -28,7 +28,9 @@ const Navbar: React.FC = () => {
     <nav className="mx-auto flex h-16 w-full items-center justify-between px-8 md:max-w-7xl">
       <div className="flex w-2/3 md:w-auto md:justify-center">
         <Link href="/" passHref>
-          <a className="focus:text-rose-500 focus:outline-none">Logo</a>
+          <a className="focus:underline focus:underline-offset-2 focus:outline-none">
+            Logo
+          </a>
         </Link>
       </div>
       <div className="hidden items-center justify-between md:flex">
@@ -36,7 +38,7 @@ const Navbar: React.FC = () => {
           {links.map((link) => (
             <li key={link.path}>
               <Link href={link.path} passHref>
-                <a className="focus:text-rose-500 focus:outline-none">
+                <a className="focus:underline focus:underline-offset-2 focus:outline-none">
                   {link.label}
                 </a>
               </Link>
@@ -58,17 +60,20 @@ const Navbar: React.FC = () => {
       {open && (
         <div
           onClick={() => setOpen(false)}
-          className="absolute top-0 left-0 z-[5] block min-h-[100vh] w-[100vw] bg-slate-500 opacity-95 md:hidden"
+          className="absolute top-0 left-0 z-[5] block min-h-[100vh] w-[100vw] bg-base1-mask opacity-95 md:hidden"
         />
       )}
       <div
         className={`absolute left-[0] top-0 z-10 block h-full ${
           open ? "translate-x-0" : "-translate-x-96"
-        } bg-stone-200 transition-all duration-300 md:hidden`}
+        } bg-base1-drawer -text-base1-drawer transition-all duration-300 md:hidden`}
       >
         {links.map((link) => (
           <Link href={link.path} key={link.path} passHref>
-            <a onClick={() => setOpen(false)} className="ml-5 mr-32 mt-5 block">
+            <a
+              onClick={() => setOpen(false)}
+              className="ml-5 mr-32 mt-5 block focus:underline focus:underline-offset-2 focus:outline-none"
+            >
               {link.label}
             </a>
           </Link>

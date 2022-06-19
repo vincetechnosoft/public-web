@@ -10,19 +10,96 @@
   [type="number"],
   textarea,
   select {
-    @apply focus: w-full rounded border-2 border-indigo-700 bg-gray-200 py-3 px-4 leading-tight text-gray-700 duration-150 focus:bg-white focus:outline-none disabled:text-gray-400;
+    @apply w-full
+    rounded
+    border-b-2
+    border-r-2
+    bg-form-color
+    py-3
+    px-4
+    leading-tight
+    -text-form-color
+    focus:border-accent1
+    focus:bg-form-color-none
+    focus:-text-form-color-none
+    focus:outline-none
+    disabled:-text-form-color-disabled;
   }
 
   [type="file"] {
-    @apply file: w-full rounded border-2 border-gray-500 bg-gray-200 py-1 pr-4 pl-1 leading-tight text-gray-700 duration-150 file:border-none file:bg-black file:py-2 file:px-6 file:text-white focus:border-indigo-700 focus:bg-white focus:outline-none disabled:text-gray-400 file:disabled:bg-gray-700;
+    @apply w-full
+    cursor-pointer
+    rounded
+    border
+    border-r-2
+    border-b-2
+    bg-form-color
+    py-1
+    pr-4
+    pl-1
+    leading-tight
+    -text-form-color
+    file:ml-4
+    file:w-0
+    file:translate-y-2
+    file:border-none
+    file:bg-form-color
+    file:bg-attachment
+    file:bg-no-repeat
+    file:px-6
+    file:py-2
+    file:text-form-color
+    focus:border-accent1
+    focus:bg-form-color-none
+    focus:-text-form-color-none
+    focus:outline-none
+    file:focus:bg-form-color-none
+    file:focus:text-form-color-none
+    disabled:text-form-color-disabled
+    file:disabled:bg-form-color-disabled;
   }
 
   label {
-    @apply my-2 block text-base font-bold uppercase tracking-wide text-gray-700;
+    @apply my-2
+    block
+    text-base
+    font-bold
+    uppercase
+    tracking-wide
+    -text-form-color;
+  }
+
+  :root {
+    --message-bg: 219 234 254;
+    --message-text: 29 78 216;
+    --message-hover-button: 30 64 175;
+    --message-hover-button-text: 255 255 255;
+    --message-focus-ring: 147 197 253;
+  }
+  .danger {
+    --message-bg: 254 226 226;
+    --message-text: 185 28 28;
+    --message-hover-button: 153 27 27;
+    --message-hover-button-text: 255 255 255;
+    --message-focus-ring: 252 165 165;
+  }
+  .success {
+    --message-bg: 220 252 231;
+    --message-text: 21 128 61;
+    --message-hover-button: 22 101 52;
+    --message-hover-button-text: 255 255 255;
+    --message-focus-ring: 134 239 172;
+  }
+  .warning {
+    --message-bg: 254 249 195;
+    --message-text: 161 98 7;
+    --message-hover-button: 133 77 14;
+    --message-hover-button-text: 255 255 255;
+    --message-focus-ring: 253 224 71;
   }
 }
 
 html {
-  @apply bg-stone-100;
+  @apply h-full bg-base1-page -text-base1-page;
   scroll-behavior: smooth;
 }
