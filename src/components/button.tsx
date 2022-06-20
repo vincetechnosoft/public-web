@@ -10,7 +10,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const className = {
   filled:
-    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page border-accent1 items-center rounded-lg bg-accent1 py-2 px-4 -text-accent1 duration-150 hover:bg-accent1-hover disabled:bg-accent1-disabled",
+    "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page border-accent1 items-center rounded-lg bg-accent1 py-2 px-4 -text-accent1 duration-150 hover:bg-accent1-hover disabled:bg-accent1-disabled/80",
   outline:
     "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg border border-base1-border py-2 px-4 -text-base1-page duration-150 hover:bg-base1-darker disabled:bg-base1-darker/50 disabled:-text-base1-disabled",
   text: "flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:-ring-base1-page items-center rounded-lg  py-2 px-4 -text-base1-page duration-150 hover:bg-base1-darker disabled:bg-base1-darker/50 disabled:-text-base1-disabled",

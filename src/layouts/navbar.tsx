@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
         {open && (
           <div
             onClick={() => setOpen(false)}
-            className="absolute top-0 left-0 z-[5] block h-full w-full bg-base1-mask opacity-95 md:hidden"
+            className="absolute top-0 left-0 z-[5] block h-full w-full bg-base1-page opacity-80 md:hidden"
           />
         )}
         <div

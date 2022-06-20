@@ -39,9 +39,9 @@ const Careers: NextPage = () => {
         <div className="mx-5 mt-5 hidden flex-wrap sm:flex lg:mx-24">
           {careersData.map(({ serviceName }, id) => (
             <Button
-              variant={selectedID === id ? "outline" : "secondery"}
+              variant={selectedID === id ? "secondery" : "outline"}
               disabled={selectedID === id}
-              className="mr-2 mb-2 disabled:font-semibold disabled:-text-base1-none"
+              className="mr-2 mb-2 disabled:font-semibold"
               key={id}
               onClick={() => setID(id)}
             >
@@ -147,7 +147,9 @@ const className = {
   inputErr(err?: string | null) {
     return err
       ? "border-feedback-error"
-      : `${err === null && "border-feedback-success"}`;
+      : err === null
+      ? "border-feedback-success"
+      : "";
   },
 };
 
@@ -388,7 +390,7 @@ function CareersForm() {
         <div className={className.div}>
           <label htmlFor="portfolio">
             Your Portfolio
-            <span className="ml-2 text-sm font-semibold -text-form-color-hint underline underline-offset-2">
+            <span className="ml-2 text-sm font-semibold -text-base1-none underline underline-offset-2">
               Optional
             </span>
           </label>
@@ -401,7 +403,7 @@ function CareersForm() {
             accept="application/pdf"
           />
           <p className="italic text-feedback-error">{error?.portfolio}</p>
-          <p className="text-sm italic -text-form-color-hint">
+          <p className="text-sm italic -text-base1-none">
             Attach your previous projects
           </p>
         </div>

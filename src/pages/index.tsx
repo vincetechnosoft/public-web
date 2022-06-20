@@ -25,16 +25,16 @@ import contactUsData from "@/data/contactUs";
 const highlights = [
   {
     icon: (
-      <Map className="fill-accent1 -stroke-accent1 h-[26px] w-auto stroke-1" />
+      <Map className="h-[26px] w-auto fill-accent1 -stroke-accent1 stroke-1" />
     ),
     label: "India Based",
   },
   {
-    icon: <Clock className="fill-accent1 -stroke-accent1 h-7 w-auto" />,
+    icon: <Clock className="h-7 w-auto fill-accent1 -stroke-accent1" />,
     label: "Zero Downtime",
   },
   {
-    icon: <Zap className="fill-accent1 text-accent1 h-6 w-auto" />,
+    icon: <Zap className="h-6 w-auto fill-accent1 text-accent1" />,
     label: "Super Fast",
   },
 ];
@@ -55,12 +55,12 @@ export default Home;
 
 function Starters() {
   return (
-    <div className="mx-5 mt-7 flex items-center justify-between md:mt-0 md:flex md:min-h-[calc(80vh_-_4rem)]">
+    <div className="mx-5 mt-7 flex min-h-[100vh] items-center justify-between md:mt-0 md:flex">
       <div className="self-centrer mx-auto w-full space-y-7 text-center md:space-y-10 md:px-10 lg:w-2/3">
         <h2 className="mt-5 text-5xl font-extrabold md:text-6xl">
           Problems with Inventory management?
           <br />
-          <span className="text-accent1 mt-5 text-3xl uppercase md:text-4xl">
+          <span className="mt-5 text-3xl uppercase text-accent1 md:text-4xl">
             Just a knock away!
           </span>
         </h2>
@@ -132,7 +132,7 @@ function SoftwareInfo() {
                 className={buttonClass.text}
                 onClick={() => setShowInfo((x) => !x)}
               >
-                Software{" "}
+                Software
                 {showInfo ? (
                   <ChevronUp className="ml-5 mt-2" />
                 ) : (
@@ -243,7 +243,9 @@ const className = {
   inputErr(err?: string | null) {
     return err
       ? "border-feedback-error"
-      : `${err === null && "border-feedback-success"}`;
+      : err === null
+      ? "border-feedback-success"
+      : "";
   },
 };
 
@@ -416,7 +418,7 @@ function ContactUsForm() {
             id="message"
             disabled={loading || success}
             required
-            className={className.inputErr(error?.phoneNumber)}
+            className={className.inputErr(error?.message)}
             placeholder="Message, explaining what you want from Us"
             onChange={onChange}
           />
