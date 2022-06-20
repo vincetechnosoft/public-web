@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
     [open]
   );
   return (
-    <>
+    <div className="base1-page">
       <div id="nev" />
       <nav className="mx-auto flex h-16 w-full items-center justify-between px-8 md:max-w-7xl">
         <div className="flex w-2/3 md:w-auto md:justify-center">
@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
           </ul>
           <div className="justify-center md:flex">
             <Link href={"/#contact-us"}>
-              <a className={buttonClass.filled}>
+              <a className={buttonClass.filled + " flex items-center"}>
                 <Send className="mr-2 h-[17px] w-auto" />
                 Contact Us
               </a>
@@ -116,7 +116,10 @@ const Navbar: React.FC = () => {
           ))}
           <div className="mt-5 ml-4 pr-10">
             <Link href={"/#contact-us"}>
-              <a onClick={() => setOpen(false)} className={buttonClass.filled}>
+              <a
+                onClick={() => setOpen(false)}
+                className={buttonClass.filled + " flex items-center"}
+              >
                 <Send className="mr-2 h-[17px] w-auto" />
                 Contact Us
               </a>
@@ -124,7 +127,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 

@@ -1,10 +1,16 @@
-const data = [
-  {
+const data: {
+  [serviceName: string]: {
+    id: number;
+    position: string;
+    asking: string[];
+    bring: string[];
+    image: string;
+  };
+} = {
+  "Creative Visualization/ Conceptualization": {
     id: 0,
-    serviceName: "Creative Visualization/ Conceptualization",
     position:
       "Vince Techno Soft believes that creativity and innovation have to run through the entire organization. This internship entails coming up with original ideas with respect to content creation and marketing. Bring your creative ideas to work and turn them into reality with us.",
-
     asking: [
       "Being a creative point of contact for anyone in the organization",
       "A good grip on pop culture and recent trends",
@@ -19,12 +25,10 @@ const data = [
     ],
     image: "/static/internship/content ideation.jpg",
   },
-  {
+  "Content and Copywriting": {
     id: 1,
-    serviceName: "Content and Copywriting",
     position:
       "This internship position entails constantly churning relevant content which will require you to collaborate with various creative departments of our organization.",
-
     asking: [
       "Following the specific, pre-determined tone of voice making sure it reflects best in the content",
       "Curating social media captions, writing content for blogs, emails, websites, and applications, along with creating taglines and so on",
@@ -41,9 +45,8 @@ const data = [
     ],
     image: "/static/internship/cinematography.jpg",
   },
-  {
+  "Graphic Designing": {
     id: 2,
-    serviceName: "Graphic Designing",
     position:
       "This internship involves the creation of concepts that can be communicated without words. As a graphic design intern, your work will revolve around creating such effective and appropriate visuals for the company’s content.",
     asking: [
@@ -59,9 +62,8 @@ const data = [
     ],
     image: "/static/internship/acting.jpg",
   },
-  {
+  "Motion Graphics Designing": {
     id: 3,
-    serviceName: "Motion Graphics Designing",
     position:
       "As a motion graphics design intern, you are expected to create visuals and high-quality content for our platforms. You will act as a functional junction between creativity and technology.",
     asking: [
@@ -80,12 +82,10 @@ const data = [
     ],
     image: "/static/internship/business dev.jpeg",
   },
-  {
+  "UI/UX Designing": {
     id: 4,
-    serviceName: "UI/UX Designing",
     position:
       "As a UI/UX design intern, you will coordinate with the graphic design as well as website and application development teams to create aesthetically pleasing, user-friendly designs for websites and applications.",
-
     asking: [
       "Building an information architecture and defining the user flow to conceptualize designs",
       "Brainstorming designs that will efficiently create user-friendly and appropriate platforms",
@@ -104,12 +104,10 @@ const data = [
     ],
     image: "/static/internship/social media.jpg",
   },
-  {
+  "Digital Marketing": {
     id: 5,
-    serviceName: "Digital Marketing",
     position:
       "Vince Techno Soft’s essence and beliefs can be propagated by a strong team of marketeers. We are looking for digital marketing enthusiasts who are creative and know the nitty-gritties of the field. You will have to stay on top of trends, bring new ideas to reach different audiences, post relatable and relevant content, as well as track the marketing campaigns to help promote our success.",
-
     asking: [
       "Contributing to the development of marketing strategies and carrying out SWOT analyses",
       "Researching and keeping an eye out for ongoing social media trends and campaigns",
@@ -127,9 +125,8 @@ const data = [
     ],
     image: "/static/internship/seo-email-marketing-main.jpg",
   },
-  {
+  "Event Management": {
     id: 6,
-    serviceName: "Event Management",
     position:
       "As an event management intern, you will be working for the logistical and organizational aspects to ensure that events run smoothly and are a success henceforth. Vince Techno Soft organizes several events and tournaments which will require the best execution skills.",
     asking: [
@@ -148,9 +145,8 @@ const data = [
     ],
     image: "/static/internship/film direction.jpg",
   },
-  {
+  "Business Development": {
     id: 7,
-    serviceName: "Business Development",
     position:
       "Vince Techno Soft works on new projects and stays mindful of the changes in the market. We are looking for an intern that assesses the portfolio of our company, researches the competitive landscape of the market, and ideates new ways to increase Vince Techno Soft’s reach in the business world.",
     asking: [
@@ -167,9 +163,8 @@ const data = [
     ],
     image: "/static/internship/film direction.jpg",
   },
-  {
+  Sales: {
     id: 8,
-    serviceName: "Sales",
     position:
       "Vince Techno Soft’s approach to sales is to be persistent and pervasive. Our team is constantly working on new tactics for increasing sales. Your role as an intern in this department would be to aid the sales team in accomplishing its tasks and collaborating with other departments to ensure maximum efficiency.",
     asking: [
@@ -188,9 +183,8 @@ const data = [
     ],
     image: "/static/internship/content writing.jpeg",
   },
-  {
+  "HR: Recruitment": {
     id: 9,
-    serviceName: "HR: Recruitment",
     position:
       "Vince Techno Soft understands the significance of quality employees. As an HR intern, you will be working on generating candidate leads by contacting active and passive candidates through various channels and ensuring a steady pipeline of candidates to meet the growing needs of the business.",
     asking: [
@@ -210,9 +204,8 @@ const data = [
     ],
     image: "/static/internship/content writing.jpeg",
   },
-  {
+  "HR: Relations": {
     id: 10,
-    serviceName: "HR: Relations",
     position:
       "Vince Techno Soft believes that there should be positive engagement with the employees so that they are connected to their job and stay goal-oriented. As an HR intern, you will be creating and maintaining healthy relationships with contacts, and ensuring that employees are fully committed to the company’s vision, goals, and values.",
     asking: [
@@ -230,9 +223,8 @@ const data = [
     ],
     image: "/static/internship/graphic design.jpg",
   },
-  {
+  "HR: Operations": {
     id: 11,
-    serviceName: "HR: Operations",
     position:
       "At Vince Techno Soft, we are looking for an HR Operations intern to oversee the functioning of our Human Resources department and provide support to our employees. As an Operations intern, your responsibilities would include reviewing and approving budgets, implementing new company policies, and maintaining internal HR systems.",
     asking: [
@@ -251,9 +243,8 @@ const data = [
     ],
     image: "/static/internship/uiux design.jpg",
   },
-  {
+  "Front-end Website Development": {
     id: 12,
-    serviceName: "Front-end Website Development",
     position:
       "This position entails coding for how the website will look, integrating the UI/UX designs, and reviewing them. As a front-end web developer, you will be responsible for the websites’ final functionality and aesthetics.",
     asking: [
@@ -274,9 +265,8 @@ const data = [
     ],
     image: "/static/internship/animation.jpg",
   },
-  {
+  "Back-end Website Development": {
     id: 13,
-    serviceName: "Back-end Website Development",
     position:
       "This position entails coding for the building and maintaining of components of a website like a database and a server. As a back-end intern, you will be responsible for the stability, security,  and cohesiveness of the back server.",
     asking: [
@@ -294,9 +284,8 @@ const data = [
     ],
     image: "/static/internship/brand dev.jpg",
   },
-  {
+  "Full-stack Website development": {
     id: 14,
-    serviceName: "Full-stack Website development",
     position:
       "This position requires a jack-of-all-trades kind of approach to coding. As a full-stack intern, you will be responsible for the creation of the whole website, including its front-end and back-end.",
     asking: [
@@ -316,9 +305,8 @@ const data = [
     ],
     image: "/static/internship/frontend_webdeveloper.jpg",
   },
-  {
+  "Application Development": {
     id: 15,
-    serviceName: "Application Development",
     position:
       "As a mobile application developer, you will be responsible for the building and testing of apps. You will aid the development team in writing code and testing different components.",
     asking: [
@@ -338,5 +326,9 @@ const data = [
     ],
     image: "/static/internship/back end.jpg",
   },
-];
-export default data;
+};
+
+export default Object.entries(data).map(([serviceName, data]) => ({
+  ...data,
+  serviceName,
+}));

@@ -46,6 +46,23 @@
     disabled:-text-base1-drawer;
   }
 
+  .button {
+    @apply rounded-lg
+    py-2
+    px-4
+    duration-150
+    focus:ring-1
+    focus:ring-offset-2;
+  }
+
+  .base2-page .button {
+    @apply focus:-ring-base2 focus:ring-offset-base2;
+  }
+
+  .base1-page .button {
+    @apply focus:-ring-base1 focus:ring-offset-base1;
+  }
+
   label {
     @apply my-2
     block
@@ -110,8 +127,12 @@
   }
 }
 html {
-  @apply h-full bg-base1 -text-base1;
+  @apply base1-page h-full;
   scroll-behavior: smooth;
+}
+
+.base1-page {
+  @apply bg-base1 -text-base1;
 }
 
 .base2-page {
@@ -123,16 +144,38 @@ html {
   @apply rounded
   border-none
   bg-base2-card
-  -text-base2-card;
+  -text-base2-card
+  drop-shadow-lg;
 }
 
-.card {
-  @apply rounded-lg
-  border
+.base1-page .card {
+  @apply border
   border-r-2
   border-b-2
   border-accent2/25
   bg-base1-card
-  -text-base1-card
-  shadow-lg;
+  -text-base1-card;
+}
+
+.card {
+  @apply rounded-lg;
+}
+
+.clickable-card {
+  @apply card
+  cursor-pointer
+  duration-200
+  hover:drop-shadow-2xl;
+}
+
+.outline-button {
+  @apply border border-b-2 border-r-2;
+}
+
+.base1-page .outline-button {
+  @apply border-base1-border;
+}
+
+.base2-page .outline-button {
+  @apply border-base2-border;
 }

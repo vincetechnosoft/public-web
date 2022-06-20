@@ -11,4 +11,5 @@ const contactUsData = {
     { Icon: Youtube, link: "https://www.youtube.com/" },
   ],
 };
+
 export default contactUsData;

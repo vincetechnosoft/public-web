@@ -24,6 +24,7 @@ module.exports = {
       "-base1": "rgb(225, 225, 225)",
 
       "base2-card": "rgb(214, 214, 214)",
+      "base2-border": "rgb(41, 21, 122)",
       base2: "rgb(229, 229, 229)",
       "-base2": "rgb(0 0 0)",
       "-base2-card": "rgb(0 0 0)",
