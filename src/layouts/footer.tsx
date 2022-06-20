@@ -14,7 +14,7 @@ const actions = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-base2 -text-base2">
+    <footer className="base2-page">
       <div className="mx-auto w-full grid-cols-2 justify-between p-5 py-16 md:grid md:py-24 md:px-24 lg:flex">
         <div>
           <div>Logo</div>

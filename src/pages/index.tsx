@@ -55,9 +55,9 @@ export default Home;
 
 function Starters() {
   return (
-    <div className="mx-5 mt-7 flex min-h-[100vh] items-center justify-between md:mt-0 md:flex">
+    <div className="mx-5 mb-12 flex min-h-[95vh] items-center justify-between md:mb-24 md:flex">
       <div className="self-centrer mx-auto w-full space-y-7 text-center md:space-y-10 md:px-10 lg:w-2/3">
-        <h2 className="mt-5 text-5xl font-extrabold md:text-6xl">
+        <h2 className="mt-5 text-5xl font-extrabold lg:text-6xl">
           Problems with Inventory management?
           <br />
           <span className="mt-5 text-3xl uppercase text-accent1 md:text-4xl">
@@ -75,7 +75,7 @@ function Starters() {
           One-Stop Solution to your inventory management, get Vince Technosoft
           services to help you with your day to day task hassle free.
         </p>
-        <ul className="flex w-full justify-between lg:mx-24">
+        <ul className="flex w-full justify-between lg:mx-24 lg:pr-24">
           {highlights.map((item) => (
             <li key={item.label} className="flex items-center">
               <span className="mr-2">{item.icon}</span>
@@ -98,7 +98,7 @@ const softwareData = [
   {
     title: "Web Development",
     content:
-      "Using UI/UX designed by our designing team, or provided by the clients, we develop websites that are highly secured and developed using the best coding practices. The end-result is a product that is responsive and easy-to-use, which gives quality and affordability. An SEO friendly, scalable, and secure website is Grownited’s assurance.",
+      "Using UI/UX designed by our designing team, or provided by the clients, we develop websites that are highly secured and developed using the best coding practices. The end-result is a product that is responsive and easy-to-use, which gives quality and affordability. An SEO friendly, scalable, and secure website is Vince Technosoft’s assurance.",
   },
   {
     title: "Application Development",
@@ -113,11 +113,9 @@ const softwareData = [
 ];
 
 function SoftwareInfo() {
-  const [showInfo, setShowInfo] = useState(false);
   return (
-    <>
-      <div id="software" className="mt-7" />
-      <div className="mx-5 mt-7 flex items-center justify-between md:mt-0 md:flex lg:mx-24">
+    <div className="base2-page min-h-[105vh] py-24">
+      <div className="mx-5 flex items-center justify-between md:mt-0 md:flex lg:mx-24">
         <div className="hidden  w-1/2 lg:block">
           <img
             src="/software.png"
@@ -126,71 +124,51 @@ function SoftwareInfo() {
           />
         </div>
         <div className="self-centrer mx-auto w-full space-y-7 text-center md:space-y-10  lg:w-1/2">
-          <h3 className="flex justify-center text-4xl md:text-5xl">
-            <Link href={showInfo ? "/#software" : "/#software-info"}>
-              <a
-                className={buttonClass.text}
-                onClick={() => setShowInfo((x) => !x)}
-              >
-                Software
-                {showInfo ? (
-                  <ChevronUp className="ml-5 mt-2" />
-                ) : (
-                  <ChevronDown className="ml-5 mt-2" />
-                )}
-              </a>
-            </Link>
-          </h3>
+          <h3 className="flex justify-center text-4xl md:text-5xl">Software</h3>
           <div className="flex min-w-full justify-center lg:hidden">
             <img src="/software.png" alt="software" className="max-h-96" />
           </div>
           <p className="mx-4 mt-5 md:text-lg lg:mx-24">
             What customers see on the Internet is what they expect to be met
-            with. Grownited understands the importance of a first impression,
-            and the need for it to be a lasting one. Leveraging design and
-            technicalities is our specialty, leaving our clients with the best
-            UI/UX and compatible websites and applications.
+            with. Vince Technosoft understands the importance of a first
+            impression, and the need for it to be a lasting one. Leveraging
+            design and technicalities is our specialty, leaving our clients with
+            the best UI/UX and compatible websites and applications.
           </p>
         </div>
       </div>
-      <div id="software-info" />
       <AnimatePresence presenceAffectsLayout exitBeforeEnter initial={false}>
-        {showInfo && (
-          <motion.div
-            initial={{ opacity: 0, x: "-100vw", y: 0 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            exit={{ opacity: 0, x: 0, y: -200 }}
-            transition={{ type: "spring" }} // Set the transition to linear
-            className="mx-5 mt-5 grid gap-4 lg:mx-24 lg:grid-cols-3"
-          >
-            {softwareData.map(({ title, content }, i) => (
-              <div
-                className="rounded-lg bg-base1-none -text-base1-none shadow-lg"
-                key={i}
-              >
-                <div className="flex justify-center rounded-t-lg bg-base2 px-2 pt-3 pb-1 -text-base2 lg:h-24 xl:h-auto">
-                  <h3 className="mb-5 text-2xl md:text-3xl">{title}</h3>
-                </div>
-                <p className="p-4 text-sm first-letter:text-4xl md:text-base">
-                  {content}
-                </p>
+        <motion.div
+          initial={{ opacity: 0, x: "-100vw", y: 0 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: 0, y: -200 }}
+          transition={{ type: "spring" }} // Set the transition to linear
+          className="mx-5 mt-5 grid gap-4 lg:mx-24 lg:grid-cols-3"
+        >
+          {softwareData.map(({ title, content }, i) => (
+            <div className="card" key={i}>
+              <div className="flex justify-center rounded-t-lg bg-base1-card px-2 pt-3 pb-1 -text-base1-card lg:h-24 xl:h-auto">
+                <h3 className="mb-5 text-2xl md:text-3xl">{title}</h3>
               </div>
-            ))}
-          </motion.div>
-        )}
+              <p className="p-4 text-sm first-letter:text-4xl md:text-base">
+                {content}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 
 function ContactUs() {
   return (
-    <>
-      <h2 className="mt-7 w-full text-center text-5xl">
+    <div className="min-h-[105vh] py-24">
+      <h2 id="contact-us" className="w-full text-center text-5xl">
         Book Free Consultation
       </h2>
       <div className="mx-5 mt-7 grid rounded-2xl shadow-2xl md:grid-cols-2 lg:mx-24">
-        <div className="rounded-t-2xl bg-base2 p-10 py-9 -text-base2 md:rounded-l-2xl md:rounded-tr-none">
+        <div className="base2-page  rounded-t-2xl p-10 py-9 md:rounded-l-2xl md:rounded-tr-none">
           <h4 className="mt-3 text-3xl">Contact Information</h4>
           <p className="mt-1">
             We are here for you in case any query or issue arises. Contact us
@@ -217,7 +195,7 @@ function ContactUs() {
         </div>
         <ContactUsForm />
       </div>
-    </>
+    </div>
   );
 }
 
@@ -349,9 +327,8 @@ function ContactUsForm() {
   }, []);
   return (
     <form
-      id="contact-us"
       onSubmit={onSubmit}
-      className="rounded-b-2xl bg-base1-none py-5 px-10 -text-base1-none md:rounded-r-2xl md:rounded-bl-none"
+      className="rounded-b-2xl bg-base1-card py-5 px-10 -text-base1-card md:rounded-r-2xl md:rounded-bl-none"
     >
       {success ? (
         <Message

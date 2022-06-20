@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { buttonClass } from "../components/button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Send, Menu } from "react-feather";
 
 const links = [
@@ -23,6 +24,7 @@ const links = [
 ];
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   useEffect(
     function () {
@@ -52,7 +54,12 @@ const Navbar: React.FC = () => {
             {links.map((link) => (
               <li key={link.path}>
                 <Link href={link.path} passHref>
-                  <a className="focus:underline focus:underline-offset-2 focus:outline-none">
+                  <a
+                    className={`${
+                      router.pathname === link.path &&
+                      "underline underline-offset-2"
+                    } focus:outline-none`}
+                  >
                     {link.label}
                   </a>
                 </Link>
@@ -76,7 +83,7 @@ const Navbar: React.FC = () => {
         {open && (
           <div
             onClick={() => setOpen(false)}
-            className="absolute top-0 left-0 z-[5] block h-full w-full bg-base1-page opacity-80 md:hidden"
+            className="absolute top-0 left-0 z-[5] block h-full w-full bg-base1 opacity-80 md:hidden"
           />
         )}
         <div
@@ -98,7 +105,10 @@ const Navbar: React.FC = () => {
             <Link href={link.path} key={link.path} passHref>
               <a
                 onClick={() => setOpen(false)}
-                className="ml-5 mr-32 mt-5 block focus:underline focus:underline-offset-2 focus:outline-none"
+                className={`${
+                  router.pathname === link.path &&
+                  "underline underline-offset-2"
+                } ml-5 mr-32 mt-5 block focus:outline-none`}
               >
                 {link.label}
               </a>

@@ -37,7 +37,7 @@ function CompneyInfo() {
 
 function FounderInfo() {
   return (
-    <div className="mx-5 mt-10 bg-base2 p-5 pt-0 -text-base2 md:flex lg:mx-24">
+    <div className="mx-5 mt-10 base2-page p-5 pt-0 md:flex lg:mx-24">
       <img
         className="h-[320px] w-auto -translate-y-3 md:h-[calc(100vw_/_5)] md:-translate-x-9"
         src="/panth.jpeg"

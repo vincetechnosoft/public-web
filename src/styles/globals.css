@@ -17,23 +17,23 @@
     border-b-2
     border-r-2
     border-base1-border/75
-    bg-base1-none
+    bg-base1-card
     py-3
     px-4
     leading-tight
-    -text-base1-none
+    -text-base1-card
     file:-my-2
     file:ml-2
     file:w-0
     file:translate-y-2
     file:cursor-pointer
     file:border-none
-    file:bg-base1-none
+    file:bg-base1-card
     file:bg-attachment
     file:bg-no-repeat
     file:px-6
     file:py-2
-    file:text-base1-none
+    file:text-base1-card
     focus:border-accent1
     focus:bg-base2
     focus:-text-base2
@@ -53,7 +53,7 @@
     font-bold
     uppercase
     tracking-wide
-    -text-base1-none;
+    -text-base1-card;
   }
 
   :root {
@@ -110,6 +110,29 @@
   }
 }
 html {
-  @apply h-full bg-base1-page -text-base1-page;
+  @apply h-full bg-base1 -text-base1;
   scroll-behavior: smooth;
+}
+
+.base2-page {
+  @apply bg-base2
+  -text-base2;
+}
+
+.base2-page .card {
+  @apply rounded
+  border-none
+  bg-base2-card
+  -text-base2-card;
+}
+
+.card {
+  @apply rounded-lg
+  border
+  border-r-2
+  border-b-2
+  border-accent2/25
+  bg-base1-card
+  -text-base1-card
+  shadow-lg;
 }

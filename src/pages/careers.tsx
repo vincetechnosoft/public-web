@@ -85,7 +85,7 @@ function CareersInfo({
       animate="enter" // Animated state to variants.enter
       exit="exit" // Exit state (used later) to variants.exit
       transition={{ type: "linear" }} // Set the transition to linear
-      className="m-5 mt-9 rounded bg-base1-none py-5 px-10 -text-base1-none shadow-md lg:mx-24"
+      className="card m-5 mt-9 py-5 px-10 lg:mx-24"
     >
       <h3 className="text-2xl font-bold">About the position</h3>
       <p className="ml-5 mt-5 text-base md:text-lg">{selectedInfo.position}</p>
@@ -280,10 +280,7 @@ function CareersForm() {
     }
   }, []);
   return (
-    <form
-      onSubmit={onSubmit}
-      className="m-5 mt-9 rounded-lg bg-base1-none py-5 px-10 -text-base1-none shadow-lg lg:mx-24"
-    >
+    <form onSubmit={onSubmit} className="card m-5 mt-9 py-5 px-10 lg:mx-24">
       <h3 className="mb-9 text-3xl">Join our team</h3>
       {success ? (
         <Message type="success" title="Form Submited Successfully">
@@ -390,7 +387,7 @@ function CareersForm() {
         <div className={className.div}>
           <label htmlFor="portfolio">
             Your Portfolio
-            <span className="ml-2 text-sm font-semibold -text-base1-none underline underline-offset-2">
+            <span className="ml-2 text-sm font-semibold -text-base1-card underline underline-offset-2">
               Optional
             </span>
           </label>
@@ -403,7 +400,7 @@ function CareersForm() {
             accept="application/pdf"
           />
           <p className="italic text-feedback-error">{error?.portfolio}</p>
-          <p className="text-sm italic -text-base1-none">
+          <p className="text-sm italic -text-base1-card">
             Attach your previous projects
           </p>
         </div>
