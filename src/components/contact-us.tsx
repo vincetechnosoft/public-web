@@ -179,7 +179,7 @@ function ContactUsForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="card rounded-b-2xl py-5 px-10 md:rounded-r-2xl md:rounded-bl-none"
+      className="card rounded-b-2xl rounded-t-none bg-accent1-disabled py-5 px-10 md:rounded-r-2xl md:rounded-l-none"
     >
       {success ? (
         <Message

@@ -125,57 +125,57 @@
     --message-dark-hover-button-text: 255 255 255;
     --message-dark-focus-ring: 253 224 71;
   }
-}
-html {
-  @apply base1-page h-full;
-  scroll-behavior: smooth;
-}
+  html {
+    @apply base1-page h-full;
+    scroll-behavior: smooth;
+  }
 
-.base1-page {
-  @apply bg-base1 -text-base1;
-}
+  .base1-page {
+    @apply bg-base1 -text-base1;
+  }
 
-.base2-page {
-  @apply bg-base2
+  .base2-page {
+    @apply bg-base2
   -text-base2;
-}
+  }
 
-.base2-page .card {
-  @apply rounded
+  .base2-page .card {
+    @apply rounded
   border-none
   bg-base2-card
   -text-base2-card
   drop-shadow-lg;
-}
+  }
 
-.base1-page .card {
-  @apply border
+  .base1-page .card {
+    @apply border
   border-r-2
   border-b-2
   border-accent2/25
   bg-base1-card
   -text-base1-card;
-}
+  }
 
-.card {
-  @apply rounded-lg;
-}
+  .card {
+    @apply rounded-lg;
+  }
 
-.clickable-card {
-  @apply card
+  .clickable-card {
+    @apply card
   cursor-pointer
   duration-200
   hover:drop-shadow-2xl;
-}
+  }
 
-.outline-button {
-  @apply border border-b-2 border-r-2;
-}
+  .outline-button {
+    @apply border border-b-2 border-r-2;
+  }
 
-.base1-page .outline-button {
-  @apply border-base1-border;
-}
+  .base1-page .outline-button {
+    @apply border-base1-border;
+  }
 
-.base2-page .outline-button {
-  @apply border-base2-border;
+  .base2-page .outline-button {
+    @apply border-base2-border;
+  }
 }
