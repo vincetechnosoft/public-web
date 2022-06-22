@@ -14,7 +14,7 @@ const Solutions: NextPage = () => {
         <h1 className="mx-5 mb-10 flex items-center text-4xl underline-offset-2 hover:underline md:mx-24">
           <LinkIcon className="mr-3" />
           <Link href="/solutions#distributors-solution">
-            <a>Distributor's Solution</a>
+            <a>Distributor&apos;s Solution</a>
           </Link>
         </h1>
         <div className="mx-5 lg:mx-10">
