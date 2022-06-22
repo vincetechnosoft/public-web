@@ -10,27 +10,30 @@ import Button from "@/components/button";
 import Message from "@/components/messages";
 import contactUsData from "@/data/contactUs";
 
-export default function ContactUs({
-  inverseStyle,
-}: {
-  inverseStyle?: boolean;
-}) {
+export default function ContactUs({ invert = false }: { invert?: boolean }) {
   return (
-    <div id="contact-us" className="base1-page min-h-[105vh] py-24">
+    <div
+      id="contact-us"
+      className={`${invert ? "base2-page" : "base1-page"} min-h-[105vh] py-24`}
+    >
       <h2 className="w-full text-center text-5xl">Book Free Consultation</h2>
       <div className="mx-5 mt-7 grid rounded-2xl shadow-2xl md:grid-cols-2 lg:mx-24">
-        <div className="base2-page  rounded-t-2xl p-10 py-9 md:rounded-l-2xl md:rounded-tr-none">
+        <div
+          className={`${
+            invert ? "base1-page" : "base2-page"
+          } rounded-t-2xl p-10 py-9 md:rounded-l-2xl md:rounded-tr-none`}
+        >
           <h4 className="mt-3 text-3xl">Contact Information</h4>
           <p className="mt-1">
             We are here for you in case any query or issue arises. Contact us
             at:
           </p>
           <div className="mt-6 flex space-x-3">
-            <Mail className="h-[1.24rem] md:h-5" />
+            <Mail className="h-5" />
             <span>{contactUsData.contact.email}</span>
           </div>
           <div className="mt-1 flex space-x-3">
-            <PhoneCall className="h-[1.24rem] md:h-5" />
+            <PhoneCall className="h-5" />
             <span>{contactUsData.contact.phone}</span>
           </div>
           <h4 className="mt-6 text-3xl">Address</h4>
@@ -39,7 +42,7 @@ export default function ContactUs({
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {contactUsData.socialMedia.map(({ Icon, link }, y) => (
               <a rel="noreferrer" target="_blank" key={y} href={link}>
-                <Icon className="h-5 -stroke-base2-dim md:h-auto" />
+                <Icon className="h-5 opacity-80 md:h-auto" />
               </a>
             ))}
           </div>
@@ -179,7 +182,7 @@ function ContactUsForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="card rounded-b-2xl rounded-t-none bg-accent1-disabled py-5 px-10 md:rounded-r-2xl md:rounded-l-none"
+      className="card rounded-b-2xl rounded-t-none py-5 px-10 md:rounded-r-2xl md:rounded-l-none"
     >
       {success ? (
         <Message
@@ -196,61 +199,69 @@ function ContactUsForm() {
       )}
       <div className={loading ? "opacity-25" : ""}>
         <div>
-          <label htmlFor="name">Name</label>
+          <label className="label" htmlFor="name">
+            Name
+          </label>
           <input
             disabled={loading || success}
             required
-            className={className.inputErr(error?.fullName)}
+            className={"input " + className.inputErr(error?.fullName)}
             id="fullName"
             placeholder="Your Good Name"
             type="text"
             onChange={onChange}
           />
-          <p className="text-base italic text-feedback-error duration-150">
+          <p className="italic text-feedback-error duration-150">
             {error?.fullName}
           </p>
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label className="label" htmlFor="email">
+            Email
+          </label>
           <input
             id="email"
             type="email"
             placeholder="Active Email Address"
             disabled={loading || success}
             required
-            className={className.inputErr(error?.email)}
+            className={"input " + className.inputErr(error?.email)}
             onChange={onChange}
           />
-          <p className="text-base italic text-feedback-error duration-150">
+          <p className="italic text-feedback-error duration-150">
             {error?.email}
           </p>
         </div>
         <div>
-          <label htmlFor="phoneNumber">Contact Number</label>
+          <label className="label" htmlFor="phoneNumber">
+            Contact Number
+          </label>
           <input
             disabled={loading || success}
             required
-            className={className.inputErr(error?.phoneNumber)}
+            className={"input " + className.inputErr(error?.phoneNumber)}
             placeholder="Your Active Phone Number"
             id="phoneNumber"
             type="text"
             onChange={onChange}
           />
-          <p className="text-base italic text-feedback-error duration-150">
+          <p className="italic text-feedback-error duration-150">
             {error?.phoneNumber}
           </p>
         </div>
         <div>
-          <label htmlFor="message">Message</label>
+          <label className="label" htmlFor="message">
+            Message
+          </label>
           <textarea
             id="message"
             disabled={loading || success}
             required
-            className={className.inputErr(error?.message)}
+            className={"input " + className.inputErr(error?.message)}
             placeholder="Message, explaining what you want from Us"
             onChange={onChange}
           />
-          <p className="text-base italic text-feedback-error duration-150">
+          <p className="italic text-feedback-error duration-150">
             {error?.message}
           </p>
         </div>

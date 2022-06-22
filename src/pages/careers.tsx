@@ -19,16 +19,16 @@ const Careers: NextPage = () => {
   []);
   const selectedInfo = careersData[selectedID];
   return (
-    <HomeLayout key="careers">
+    <HomeLayout>
       <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
         <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
           Careers
         </h2>
         <div className="mx-5 mt-5 sm:hidden">
-          <label htmlFor="careers" className="block text-2xl">
+          <label className="label" htmlFor="careers">
             Select DEPARTMENT
           </label>
-          <select id="careers" className={"mt-2"} onChange={setID}>
+          <select id="careers" className="input mt-2" onChange={setID}>
             {careersData.map(({ serviceName }, id) => (
               <option value={id} key={serviceName} className="mr-2 mb-2">
                 {serviceName}
@@ -85,24 +85,24 @@ function CareersInfo({
       animate="enter" // Animated state to variants.enter
       exit="exit" // Exit state (used later) to variants.exit
       transition={{ type: "linear" }} // Set the transition to linear
-      className="card m-5 mt-9 py-5 px-10 lg:mx-24"
+      className="card m-5 mt-9 rounded-xl py-5 px-10 lg:mx-24"
     >
       <h3 className="text-2xl font-bold">About the position</h3>
-      <p className="ml-5 mt-5 text-base md:text-lg">{selectedInfo.position}</p>
+      <p className="ml-5 mt-5 md:text-lg">{selectedInfo.position}</p>
       <h2 className="mt-9 text-3xl">What we are asking of you:</h2>
-      <ul className="ml-10 mt-5 list-disc text-base md:text-lg">
+      <ul className="ml-10 mt-5 list-disc md:text-lg">
         {selectedInfo.asking.map((x) => (
           <li key={x}>{x}</li>
         ))}
       </ul>
       <h2 className="mt-9 text-3xl">What you bring to the table:</h2>
-      <ul className="mt-5 ml-10 list-disc text-base md:text-lg">
+      <ul className="mt-5 ml-10 list-disc md:text-lg">
         {selectedInfo.bring.map((x) => (
           <li key={x}>{x}</li>
         ))}
       </ul>
       <h3 className="mt-9 text-2xl font-bold">What we offer:</h3>
-      <p className="mt-5 ml-5 text-base md:text-lg">
+      <p className="mt-5 ml-5 md:text-lg">
         Be prepared to grow with Vince Techno Soft. Interning with us is in your
         interest as we provide a top-tier holistic experience. Our idea is to
         catalyze and reform one’s concept of professional freedom by placing
@@ -280,7 +280,10 @@ function CareersForm() {
     }
   }, []);
   return (
-    <form onSubmit={onSubmit} className="card m-5 mt-9 py-5 px-10 lg:mx-24">
+    <form
+      onSubmit={onSubmit}
+      className="card m-5 mt-9 rounded-xl py-5 px-10 lg:mx-24"
+    >
       <h3 className="mb-9 text-3xl">Join our team</h3>
       {success ? (
         <Message type="success" title="Form Submited Successfully">
@@ -297,11 +300,13 @@ function CareersForm() {
         }`}
       >
         <div className={className.div}>
-          <label htmlFor="email">Email</label>
+          <label className="label" htmlFor="email">
+            Email
+          </label>
           <input
             disabled={loading || success}
             required
-            className={className.inputErr(error?.email)}
+            className={"input " + className.inputErr(error?.email)}
             id="email"
             placeholder="Active Email Address"
             type="email"
@@ -311,11 +316,13 @@ function CareersForm() {
           <p className="italic text-feedback-error">{error?.email}</p>
         </div>
         <div className={className.div}>
-          <label htmlFor="fullName">Full Name</label>
+          <label className="label" htmlFor="fullName">
+            Full Name
+          </label>
           <input
             disabled={loading || success}
             required
-            className={className.inputErr(error?.fullName)}
+            className={"input " + className.inputErr(error?.fullName)}
             id="fullName"
             placeholder="Your Good Name"
             type="text"
@@ -324,11 +331,13 @@ function CareersForm() {
           <p className="italic text-feedback-error">{error?.fullName}</p>
         </div>
         <div className={className.div}>
-          <label htmlFor="phoneNumber">Contact Number</label>
+          <label className="label" htmlFor="phoneNumber">
+            Contact Number
+          </label>
           <input
             disabled={loading || success}
             required
-            className={className.inputErr(error?.phoneNumber)}
+            className={"input " + className.inputErr(error?.phoneNumber)}
             placeholder="Your Active Phone Number"
             id="phoneNumber"
             type="text"
@@ -337,11 +346,13 @@ function CareersForm() {
           <p className="italic text-feedback-error">{error?.phoneNumber}</p>
         </div>
         <div className={className.div}>
-          <label htmlFor="city">City of Residence</label>
+          <label className="label" htmlFor="city">
+            City of Residence
+          </label>
           <input
             disabled={loading || success}
             required
-            className={className.inputErr(error?.city)}
+            className={"input " + className.inputErr(error?.city)}
             placeholder="City"
             id="city"
             type="text"
@@ -350,13 +361,15 @@ function CareersForm() {
           <p className="italic text-feedback-error">{error?.city}</p>
         </div>
         <div className={className.div}>
-          <label htmlFor="department">Department</label>
+          <label className="label" htmlFor="department">
+            Department
+          </label>
           <select
             defaultValue=""
             disabled={loading || success}
             required
             placeholder="Select Department"
-            className={className.inputErr(error?.department)}
+            className={"input " + className.inputErr(error?.department)}
             id="department"
             onChange={onChange}
           >
@@ -372,12 +385,14 @@ function CareersForm() {
           <p className="italic text-feedback-error">{error?.department}</p>
         </div>
         <div className={className.div}>
-          <label htmlFor="cv">Your CV</label>
+          <label className="label" htmlFor="cv">
+            Your CV
+          </label>
           <input
             disabled={loading || success}
             required
             onChange={onChange}
-            className={className.inputErr(error?.cv)}
+            className={"input " + className.inputErr(error?.cv)}
             id="cv"
             type="file"
             accept="application/pdf"
@@ -385,24 +400,22 @@ function CareersForm() {
           <p className="italic text-feedback-error">{error?.cv}</p>
         </div>
         <div className={className.div}>
-          <label htmlFor="portfolio">
+          <label className="label" htmlFor="portfolio">
             Your Portfolio
-            <span className="ml-2 text-sm font-semibold -text-base1-card underline underline-offset-2">
+            <span className="ml-2 text-sm font-semibold underline underline-offset-2">
               Optional
             </span>
           </label>
           <input
             disabled={loading || success}
             onChange={onChange}
-            className={className.inputErr(error?.department)}
+            className={"input " + className.inputErr(error?.department)}
             id="portfolio"
             type="file"
             accept="application/pdf"
           />
           <p className="italic text-feedback-error">{error?.portfolio}</p>
-          <p className="text-sm italic -text-base1-card">
-            Attach your previous projects
-          </p>
+          <p className="text-sm italic">Attach your previous projects</p>
         </div>
       </div>
 

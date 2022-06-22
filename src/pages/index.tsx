@@ -23,12 +23,10 @@ const highlights = [
 
 const Home: NextPage = () => {
   return (
-    <HomeLayout key="landing">
-      <div className="pb-10">
-        <Starters />
-        <SoftwareInfo />
-        <ContactUs />
-      </div>
+    <HomeLayout>
+      <Starters />
+      <SoftwareInfo />
+      <ContactUs />
     </HomeLayout>
   );
 };
@@ -98,7 +96,7 @@ function SoftwareInfo() {
   return (
     <div className="base2-page min-h-[105vh] py-24">
       <div className="mx-5 flex items-center justify-between md:mt-0 md:flex lg:mx-24">
-        <div className="hidden  w-1/2 lg:block">
+        <div className="hidden w-1/2 lg:block">
           <img
             src="/software.png"
             alt="software"
@@ -122,12 +120,14 @@ function SoftwareInfo() {
       <div className="mx-5 mt-5 grid gap-4 lg:mx-24 lg:grid-cols-3">
         {softwareData.map(({ title, content }, i) => (
           <div className="card" key={i}>
-            <div className="flex justify-center rounded-t-lg bg-base1-card px-2 pt-3 pb-1 -text-base1-card lg:h-24 xl:h-auto">
+            <div className="flex justify-center rounded-t-lg bg-accent2 px-2 pt-3 pb-1 -text-accent2 lg:h-24 xl:h-auto">
               <h3 className="mb-5 text-2xl md:text-3xl">{title}</h3>
             </div>
-            <p className="p-4 text-sm first-letter:text-4xl md:text-base">
-              {content}
-            </p>
+            <div className="">
+              <p className="p-4 text-sm first-letter:text-4xl md:text-base">
+                {content}
+              </p>
+            </div>
           </div>
         ))}
       </div>

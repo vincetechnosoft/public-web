@@ -3,7 +3,7 @@ import { NextPage } from "next";
 
 const AboutUs: NextPage = () => {
   return (
-    <HomeLayout key="about-us">
+    <HomeLayout>
       <div className="py-7 md:mt-0">
         <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
           About Us
@@ -37,7 +37,7 @@ function CompneyInfo() {
 
 function FounderInfo() {
   return (
-    <div className="mx-5 mt-10 base2-page p-5 pt-0 md:flex lg:mx-24">
+    <div className="base2-page mx-5 mt-10 p-5 pt-0 md:flex lg:mx-24">
       <img
         className="h-[320px] w-auto -translate-y-3 md:h-[calc(100vw_/_5)] md:-translate-x-9"
         src="/panth.jpeg"

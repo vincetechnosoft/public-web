@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
               {contactUsData.socialMedia.map(({ Icon, link }, y) => (
                 <a rel="noreferrer" target="_blank" key={y} href={link}>
-                  <Icon className="h-5 -stroke-base2-dim md:h-auto" />
+                  <Icon className="h-5 opacity-80 md:h-auto" />
                 </a>
               ))}
             </div>
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {contactUsData.socialMedia.map(({ Icon, link }, y) => (
               <a rel="noreferrer" target="_blank" key={y} href={link}>
-                <Icon className="h-5 -stroke-base2-dim md:h-auto" />
+                <Icon className="h-5 opacity-80 md:h-auto" />
               </a>
             ))}
           </div>

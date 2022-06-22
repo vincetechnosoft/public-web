@@ -4,20 +4,11 @@ import { distributor, distributorClient } from "data/solutions";
 import Link from "next/link";
 import { Link as LinkIcon } from "react-feather";
 import ContactUs from "@/components/contact-us";
-import { useEffect } from "react";
 import Button from "@/components/button";
 
 const Solutions: NextPage = () => {
-  useEffect(function () {
-    const html = document.getElementsByTagName("html").item(0);
-    if (!html) return;
-    html.className = " base2-page";
-    return function () {
-      html.className = "";
-    };
-  }, []);
   return (
-    <HomeLayout key="solutions">
+    <HomeLayout>
       <div id="distributors-solution" />
       <div className="min-h-[100vh] py-10">
         <h1 className="mx-5 mb-10 flex items-center text-4xl underline-offset-2 hover:underline md:mx-24">
@@ -29,11 +20,8 @@ const Solutions: NextPage = () => {
         <div className="mx-5 lg:mx-10">
           {[distributor, distributorClient].map(
             ({ capabalities, discription, iconPath, id, title }, i) => (
-              <Link key={i} href={"solutions/" + id}>
-                <div
-                  id={id}
-                  className="clickable-card outline-button mb-10 sm:flex"
-                >
+              <Link key={i} href={"/" + id}>
+                <div id={id} className="clickable-card relative mb-10 sm:flex">
                   <img
                     src={iconPath}
                     alt={title}
@@ -66,7 +54,7 @@ const Solutions: NextPage = () => {
           )}
         </div>
       </div>
-      <ContactUs inverseStyle />
+      <ContactUs />
     </HomeLayout>
   );
 };

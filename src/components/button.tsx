@@ -11,9 +11,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const className = {
   filled:
     "button border-accent1 rounded-lg bg-accent1 py-2 px-4 -text-accent1 duration-150 hover:bg-accent1-hover disabled:bg-accent1-disabled/80",
-  outline:
-    "button outline-button hover:bg-base1-darker hover:-text-base1 disabled:opacity-50 disabled:-text-base1-disabled",
-  text: "button hover:bg-base1-darker disabled:disabled:opacity-50 disabled:-text-base1-disabled",
+  outline: "outline-button disabled:opacity-50 disabled:-text-base2-disabled",
   secondery:
     "button bg-accent2 -text-accent2 hover:bg-accent2-hover disabled:bg-accent2-disabled",
 };

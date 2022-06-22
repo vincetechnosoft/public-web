@@ -1,23 +1,24 @@
-export const distributor = {
+import { SolutionInfo } from "@/components/solutionInfo";
+
+export const distributor: SolutionInfo = {
   id: "distributor",
   title: "Distributor's app",
   discription: "Solution for distributors, a business to business solution.",
   capabalities: [
-    "Take orders",
+    // "Take orders",
     "Inventory management",
     "Wallet management",
     "Manage Due payments",
     "Manage Due Boxes (for Amul like distributors)",
     "Profit calculations",
     "Generate monthly Reports for each relation",
-    "Send Buyers there whatsapp report",
-    "Analitics",
-    "and much more...",
+    // "Send Buyers there whatsapp report",
+    // "Analitics",
   ],
   iconPath: "/solutions/distributor.png",
 };
 
-export const distributorClient = {
+export const distributorClient: SolutionInfo = {
   id: "distributor-client",
   title: "Client-Side app",
   discription: "Buyer Interface for distributors.",
@@ -30,9 +31,4 @@ export const distributorClient = {
     "Generate monthly Reports for each relation",
   ],
   iconPath: "/solutions/distributor-client.png",
-};
-
-export default {
-  [distributor.id]: distributor,
-  [distributorClient.id]: distributorClient,
 };
