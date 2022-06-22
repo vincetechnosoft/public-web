@@ -44,7 +44,7 @@ function TutorialStep({
         {title}
       </h2>
       <p className="font-semibold">{discription}</p>
-      {note && <Message title={note} />}
+      {note && <Message>{note}</Message>}
       {steps && (
         <ol>
           {steps.map((x) => (

@@ -16,14 +16,16 @@ export default function ContactUs({ invert = false }: { invert?: boolean }) {
       id="contact-us"
       className={`${invert ? "base2-page" : "base1-page"} min-h-[105vh] py-24`}
     >
-      <h2 className="w-full text-center text-5xl">Book Free Consultation</h2>
-      <div className="mx-5 mt-7 grid rounded-2xl shadow-2xl md:grid-cols-2 lg:mx-24">
+      <h2 className="w-full text-center text-2xl md:text-5xl">
+        Book Free Consultation
+      </h2>
+      <div className="mx-1 mt-7 grid rounded-2xl shadow-2xl sm:mx-5 md:grid-cols-2 lg:mx-24">
         <div
           className={`${
             invert ? "base1-page" : "base2-page"
-          } rounded-t-2xl p-10 py-9 md:rounded-l-2xl md:rounded-tr-none`}
+          } rounded-t-2xl px-5 py-9 md:rounded-l-2xl md:rounded-tr-none md:px-10`}
         >
-          <h4 className="mt-3 text-3xl">Contact Information</h4>
+          <h4 className="mt-3 text-2xl md:text-3xl">Contact Information</h4>
           <p className="mt-1">
             We are here for you in case any query or issue arises. Contact us
             at:
@@ -36,9 +38,9 @@ export default function ContactUs({ invert = false }: { invert?: boolean }) {
             <PhoneCall className="h-5" />
             <span>{contactUsData.contact.phone}</span>
           </div>
-          <h4 className="mt-6 text-3xl">Address</h4>
+          <h4 className="mt-6 text-2xl md:text-3xl">Address</h4>
           <p className="mt-1">{contactUsData.address}</p>
-          <h4 className="mt-6 text-3xl">Connect With Us</h4>
+          <h4 className="mt-6 text-2xl md:text-3xl">Connect With Us</h4>
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {contactUsData.socialMedia.map(({ Icon, link }, y) => (
               <a rel="noreferrer" target="_blank" key={y} href={link}>

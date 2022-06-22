@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Info, AlertOctagon, AlertTriangle, ThumbsUp } from "react-feather";
 
 interface Props {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   children?: React.ReactNode;
   type?: keyof typeof Icons;
   showDismissButton?: boolean;
@@ -21,14 +21,17 @@ function Message(props: Props) {
     <div
       hidden={!show}
       className={
-        "mb-4 rounded-lg bg-message-bg p-4 pt-0 text-message-text " + props.type
+        "mb-4 rounded-lg bg-message-bg px-2 py-1 text-message-text  md:p-4 " +
+        props.type
       }
       role="alert"
     >
-      <div className="flex items-baseline">
-        <Icon className="mr-2 h-5 w-5" />
-        <h3 className="text-lg font-medium">{props.title}</h3>
-      </div>
+      {props.title && (
+        <div className="flex items-baseline">
+          <Icon className="mr-2 h-5 w-5" />
+          <h3 className="text-lg font-medium">{props.title}</h3>
+        </div>
+      )}
       {props.children && (
         <div className="mt-2 mb-4 text-sm">{props.children}</div>
       )}
