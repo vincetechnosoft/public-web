@@ -23,19 +23,19 @@ export default function ContactUs({ invert = false }: { invert?: boolean }) {
         <div
           className={`${
             invert ? "base1-page" : "base2-page"
-          } rounded-t-2xl px-5 py-9 md:rounded-l-2xl md:rounded-tr-none md:px-10`}
+          } rounded-t-2xl py-9 px-1 sm:px-5 md:rounded-l-2xl md:rounded-tr-none md:px-10`}
         >
           <h4 className="mt-3 text-2xl md:text-3xl">Contact Information</h4>
           <p className="mt-1">
             We are here for you in case any query or issue arises. Contact us
             at:
           </p>
-          <div className="mt-6 flex space-x-3">
-            <Mail className="h-5" />
+          <div className="mt-6 flex space-x-1 sm:space-x-3">
+            <Mail className="h-4 sm:h-5" />
             <span>{contactUsData.contact.email}</span>
           </div>
-          <div className="mt-1 flex space-x-3">
-            <PhoneCall className="h-5" />
+          <div className="mt-1 flex space-x-1 sm:space-x-3">
+            <PhoneCall className="h-4 sm:h-5" />
             <span>{contactUsData.contact.phone}</span>
           </div>
           <h4 className="mt-6 text-2xl md:text-3xl">Address</h4>
@@ -184,7 +184,7 @@ function ContactUsForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="card rounded-b-2xl rounded-t-none py-5 px-10 md:rounded-r-2xl md:rounded-l-none"
+      className="card rounded-b-2xl rounded-t-none py-5 px-5 sm:px-10 md:rounded-r-2xl md:rounded-l-none"
     >
       {success ? (
         <Message

@@ -15,6 +15,7 @@ const tutorial: TutorialData = [
       "Enter the OTP you get",
       "Wait while it loads",
     ],
+    videoLink: "/distributor/login.mp4",
   },
   {
     id: "create-compney",
@@ -27,6 +28,7 @@ const tutorial: TutorialData = [
       "Enter name for you'r Compney",
       'Press "Create" to create the compney',
     ],
+    videoLink: "/distributor/create-compney.mp4",
   },
   {
     id: "add-sellers",
@@ -39,6 +41,7 @@ const tutorial: TutorialData = [
       'Enter correct information and press "Create", this will create a new Seller.',
       "Add all of your sellers",
     ],
+    videoLink: "/distributor/add-sellers.mp4",
   },
   {
     id: "add-buyers",
@@ -51,6 +54,7 @@ const tutorial: TutorialData = [
       'Enter correct information and press "Create", this will create a new Buyer.',
       "Add all of your buyers",
     ],
+    videoLink: "/distributor/add-buyers.mp4",
   },
   {
     id: "add-products",
@@ -70,6 +74,7 @@ const tutorial: TutorialData = [
       'Now click in top-right "✔" to create the Product',
       "Go Back, Add all of your products",
     ],
+    videoLink: "/distributor/add-products.mp4",
   },
   {
     id: "buy-products",
@@ -84,6 +89,7 @@ const tutorial: TutorialData = [
       'Now click in bottom-right "✔" to create the Entry',
       "Select the date you bought the stock at (this feature is helpfull if you bought stock at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/buy-stock from sellers.mp4",
   },
   {
     id: "sell-products",
@@ -98,6 +104,7 @@ const tutorial: TutorialData = [
       'Now click in bottom-right "✔" to create the Entry',
       "Select the date you sell the stock at (this feature is helpfull if you sold stock at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/sell-stock to buyers.mp4",
   },
   {
     id: "take-payments",
@@ -112,6 +119,7 @@ const tutorial: TutorialData = [
       'Now click at "Take Payment" button to create the Entry',
       "Select the date you take payment at (this feature is helpfull if you had taken payment at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/take-payment from buyers.mp4",
   },
   {
     id: "make-payments",
@@ -126,6 +134,7 @@ const tutorial: TutorialData = [
       'Now click at "Pay" button to create the Entry',
       "Select the date you made payment at (this feature is helpfull if you had make payment at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/make-payment to seller.mp4",
   },
   {
     id: "take-boxes-back",
@@ -141,6 +150,7 @@ const tutorial: TutorialData = [
       'Now click at "Take Payment" button to create the Entry',
       "Select the date you take payment at (this feature is helpfull if you had taken payment at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/take-boxes.mp4",
   },
   {
     id: "make-expenses-salary",
@@ -155,6 +165,7 @@ const tutorial: TutorialData = [
       'Then click on "Apply" button to create the entry',
       "Select the date you made expenses/salary at (this feature is helpfull if you had made expenses/salary at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/make expenses-give salary.mp4",
   },
   {
     id: "deposit-money",
@@ -169,6 +180,7 @@ const tutorial: TutorialData = [
       'Then click on "Apply" button to create the entry',
       "Select the date you deposit money in compney at (this feature is helpfull if you had deposited money in compney at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/deposit-money.mp4",
   },
   {
     id: "withdraw-money",
@@ -183,16 +195,18 @@ const tutorial: TutorialData = [
       'Then click on "Apply" button to create the entry',
       "Select the date you withdraw money in compney at (this feature is helpfull if you had withdrawed money in compney at 19th July, but forgot to make entry. Then at 21st July while making this entry select 19th July)",
     ],
+    videoLink: "/distributor/withdraw-money.mp4",
   },
   {
     id: "see-current-entries",
-    title: "Sell all Entries",
+    title: "See all Entries",
     discription: "see all entries of this month",
     steps: [
       'Click on top-left "≡" button to see other pages',
       "Select Current Entries Tab, you will see list of all current entries of this month",
       "Click on any entry, you will see detailed information related to that entry",
     ],
+    videoLink: "/distributor/see-entries.mp4",
   },
   {
     id: "filter-entries",
@@ -210,6 +224,7 @@ const tutorial: TutorialData = [
       "Seller: This will filter on basis of who is the seller",
       'Then press "Done", you will see filtered entries',
     ],
+    videoLink: "/distributor/filter-entries.mp4",
   },
   {
     id: "delete-current-entry",
@@ -223,6 +238,7 @@ const tutorial: TutorialData = [
       'Alert dialog will ask you if you realy want to delete the entry, press "yes" if you want to delete',
       'A message will appere saying "Successfully deleted"',
     ],
+    videoLink: "/distributor/delete-entry.mp4",
   },
   {
     id: "see-reports",
@@ -235,6 +251,7 @@ const tutorial: TutorialData = [
       "Select the month you like to see report of",
       'You can also filter entries before seeing any of the report table from top-right "≡" button',
     ],
+    videoLink: "/distributor/see-report.mp4",
   },
   {
     id: "profit-calculation",
