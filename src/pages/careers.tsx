@@ -41,7 +41,7 @@ const Careers: NextPage = () => {
             <Button
               variant={selectedID === id ? "secondery" : "outline"}
               disabled={selectedID === id}
-              className="mr-2 mb-2 disabled:font-semibold"
+              className="mr-2 mb-2 disabled:bg-base2 disabled:font-semibold"
               key={id}
               onClick={() => setID(id)}
             >
@@ -308,7 +308,7 @@ function CareersForm() {
             required
             className={"input " + className.inputErr(error?.email)}
             id="email"
-            placeholder="Active Email Address"
+            placeholder="eg. abc@xyz.com"
             type="email"
             inputMode="email"
             onChange={onChange}
@@ -324,7 +324,7 @@ function CareersForm() {
             required
             className={"input " + className.inputErr(error?.fullName)}
             id="fullName"
-            placeholder="Your Good Name"
+            placeholder="Full Name"
             type="text"
             onChange={onChange}
           />
@@ -338,7 +338,7 @@ function CareersForm() {
             disabled={loading || success}
             required
             className={"input " + className.inputErr(error?.phoneNumber)}
-            placeholder="Your Active Phone Number"
+            placeholder="eg. XXXXX XXXXX"
             id="phoneNumber"
             type="text"
             onChange={onChange}

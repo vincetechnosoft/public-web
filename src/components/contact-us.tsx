@@ -8,7 +8,19 @@ import React, {
 } from "react";
 import Button from "@/components/button";
 import Message from "@/components/messages";
-import contactUsData from "@/data/contactUs";
+import { Facebook, Linkedin, Instagram, Twitter, Youtube } from "react-feather";
+
+export const contactUsData = {
+  contact: { email: "support@vincetechnosoft.com", phone: "+91 91733 73578" },
+  address: "* Still looking for a location",
+  socialMedia: [
+    { Icon: Facebook, link: "https://www.facebook.com/" },
+    { Icon: Linkedin, link: "https://www.linkedin.com/" },
+    { Icon: Instagram, link: "https://www.instagram.com/" },
+    { Icon: Twitter, link: "https://twitter.com/" },
+    { Icon: Youtube, link: "https://www.youtube.com/" },
+  ],
+};
 
 export default function ContactUs({ invert = false }: { invert?: boolean }) {
   return (
@@ -38,8 +50,8 @@ export default function ContactUs({ invert = false }: { invert?: boolean }) {
             <PhoneCall className="h-4 sm:h-5" />
             <span>{contactUsData.contact.phone}</span>
           </div>
-          <h4 className="mt-6 text-2xl md:text-3xl">Address</h4>
-          <p className="mt-1">{contactUsData.address}</p>
+          {/* <h4 className="mt-6 text-2xl md:text-3xl">Address</h4>
+          <p className="mt-1">{contactUsData.address}</p> */}
           <h4 className="mt-6 text-2xl md:text-3xl">Connect With Us</h4>
           <div className="mt-3 mb-5 flex space-x-4 md:space-x-6">
             {contactUsData.socialMedia.map(({ Icon, link }, y) => (
@@ -115,7 +127,9 @@ function ContactUsForm() {
       message: null,
     };
     const { email, message } = formData.current;
-    const phoneNumber = formData.current.phoneNumber.replaceAll(" ", "");
+    const phoneNumber = formData.current.phoneNumber
+      .replaceAll(" ", "")
+      .replaceAll("-", "");
     const fullName = formData.current.fullName.trim();
     if (!email) {
       error.email = "Email is Required";
@@ -209,7 +223,7 @@ function ContactUsForm() {
             required
             className={"input " + className.inputErr(error?.fullName)}
             id="fullName"
-            placeholder="Your Good Name"
+            placeholder="Full Name"
             type="text"
             onChange={onChange}
           />
@@ -224,7 +238,7 @@ function ContactUsForm() {
           <input
             id="email"
             type="email"
-            placeholder="Active Email Address"
+            placeholder="eg. abc@xyz.com"
             disabled={loading || success}
             required
             className={"input " + className.inputErr(error?.email)}
@@ -242,7 +256,7 @@ function ContactUsForm() {
             disabled={loading || success}
             required
             className={"input " + className.inputErr(error?.phoneNumber)}
-            placeholder="Your Active Phone Number"
+            placeholder="eg. XXXXX XXXXX"
             id="phoneNumber"
             type="text"
             onChange={onChange}
@@ -260,7 +274,7 @@ function ContactUsForm() {
             disabled={loading || success}
             required
             className={"input " + className.inputErr(error?.message)}
-            placeholder="Message, explaining what you want from Us"
+            placeholder="Type..."
             onChange={onChange}
           />
           <p className="italic text-feedback-error duration-150">

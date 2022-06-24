@@ -1,14 +1,14 @@
 import React from "react";
 import { Mail, PhoneCall } from "react-feather";
-import contactUsData from "@/data/contactUs";
 import Link from "next/link";
+import { contactUsData } from "@/components/contact-us";
 
 const actions = [
   { text: "About Us", to: "/about-us" },
-  { text: "FAQs", to: "/faq" },
+  // { text: "FAQs", to: "/faq" },
   { text: "Privacy Policy", to: "/privacy-policy" },
   { text: "Contect Us", to: "/#contact-us" },
-  { text: "Terms & Conditions", to: "/t&c" },
+  // { text: "Terms & Conditions", to: "/terms-and-condition" },
   { text: "Careers", to: "/careers" },
 ];
 
