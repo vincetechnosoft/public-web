@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const route = useRouter().pathname;
+  const route = useRouter();
   return (
     <>
       <div className="base1-page">
@@ -14,9 +14,21 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AnimatePresence
           exitBeforeEnter
           initial={false}
-          onExitComplete={() => window.scrollTo(0, 0)}
+          presenceAffectsLayout
+          onExitComplete={() => {
+            const [, id] = route.asPath.split("#");
+            console.log(id);
+            if (id) {
+              setTimeout(
+                () => document.getElementById(id)?.scrollIntoView(),
+                10
+              );
+            } else {
+              window.scrollTo(0, 0);
+            }
+          }}
         >
-          <Component {...pageProps} key={route} />
+          <Component {...pageProps} key={route.pathname} />
         </AnimatePresence>
         <Footer />
       </div>

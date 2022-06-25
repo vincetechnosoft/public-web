@@ -50,7 +50,7 @@ function Starters() {
             className="max-h-96"
           />
         </div>
-        <p className="md:text-lg lg:mx-24">
+        <p className="font-mono md:text-lg lg:mx-24">
           One-Stop Solution to your inventory management, get Vince Technosoft
           services to help you with your day to day task hassle free.
         </p>

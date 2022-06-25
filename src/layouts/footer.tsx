@@ -7,7 +7,7 @@ const actions = [
   { text: "About Us", to: "/about-us" },
   // { text: "FAQs", to: "/faq" },
   { text: "Privacy Policy", to: "/privacy-policy" },
-  { text: "Contect Us", to: "/#contact-us" },
+  { text: "contact Us", to: "/#contact-us" },
   // { text: "Terms & Conditions", to: "/terms-and-condition" },
   { text: "Careers", to: "/careers" },
 ];

@@ -1,7 +1,7 @@
 import Button from "./button";
-import { Download } from "react-feather";
 import { useCallback, useState } from "react";
 import { AndroudIcon } from "./icons";
+import { getDownloadUrl } from "data/firebase";
 
 interface Props {
   id: string;
@@ -48,16 +48,13 @@ const SolutionInfo: React.FC<Props> = ({
 
 export default SolutionInfo;
 
-let getUrl: ((id: string) => Promise<string>) | undefined;
-
 function DownloadAndroidApk({ id }: { id: string }) {
   const [loading, setLoading] = useState(false);
   const onClick = useCallback(
     async function () {
       setLoading(true);
       try {
-        getUrl ??= (await import("data/firebase")).default;
-        const url = await getUrl(id);
+        const url = await getDownloadUrl(id);
         window.open(url);
       } catch {}
       setLoading(false);

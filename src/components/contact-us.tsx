@@ -9,6 +9,7 @@ import React, {
 import Button from "@/components/button";
 import Message from "@/components/messages";
 import { Facebook, Linkedin, Instagram, Twitter, Youtube } from "react-feather";
+import { onContactUsFormSubmit } from "@/data/firebase";
 
 export const contactUsData = {
   contact: { email: "support@vincetechnosoft.com", phone: "+91 91733 73578" },
@@ -73,18 +74,15 @@ interface FormData {
   phoneNumber: string;
   message: string;
 }
+export type ContactUsFormData = FormData;
 
 interface State {
   loading: boolean;
   success?: boolean;
   errorMessage?: JSX.Element;
-  error?: {
-    fullName: string | null;
-    email: string | null;
-    phoneNumber: string | null;
-    message: string | null;
-  };
+  error?: { [key in keyof FormData]: string | null };
 }
+
 const className = {
   inputErr(err?: string | null) {
     return err
@@ -150,7 +148,7 @@ function ContactUsForm() {
     }
     if (!message) {
       error.message = "Message is Required";
-    } else if (message.length < 10 || message.split(" ").length < 10) {
+    } else if (message.split(" ").length < 5) {
       error.message = "Elaborate you message a bit";
     }
     if (!fullName) {
@@ -165,7 +163,7 @@ function ContactUsForm() {
     if (Object.values(error).find((x) => typeof x === "string") === undefined) {
       console.log(formData.current);
       setState({ error, loading: true });
-      sendData({
+      onContactUsFormSubmit({
         email,
         fullName,
         phoneNumber,
@@ -293,12 +291,5 @@ function ContactUsForm() {
         </Button>
       </div>
     </form>
-  );
-}
-let i = 0;
-
-function sendData(data: FormData) {
-  return new Promise<void>((resolve, reject) =>
-    setTimeout(i++ % 2 ? resolve : reject, 1000)
   );
 }
