@@ -2,7 +2,6 @@ import careersData from "@/data/careers";
 import Button from "@/components/button";
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import Message from "@/components/messages";
-import { onCareersFormSubmit } from "@/data/firebase";
 
 interface FormData {
   email: string;
@@ -129,35 +128,39 @@ export default function CareersForm() {
     if (Object.values(error).find((x) => typeof x === "string") === undefined) {
       console.log(formData.current);
       setState({ error, loading: true });
-      onCareersFormSubmit({
-        city,
-        cv,
-        department,
-        email,
-        fullName,
-        phoneNumber,
-        portfolio,
-      }).then(
-        function () {
-          setState({ error, loading: false, success: true });
-        },
-        function () {
-          setState({
-            error,
-            loading: false,
-            errorMessage: (
-              <Message
-                showDismissButton
-                type="danger"
-                title="Error While Submitting Form"
-              >
-                Something went wrong. Try re-submitting the form, or come back
-                later and try-again
-              </Message>
-            ),
-          });
-        }
-      );
+      import("data/firebase")
+        .then(({ onCareersFormSubmit }) =>
+          onCareersFormSubmit({
+            city,
+            cv,
+            department,
+            email,
+            fullName,
+            phoneNumber,
+            portfolio,
+          })
+        )
+        .then(
+          function () {
+            setState({ error, loading: false, success: true });
+          },
+          function () {
+            setState({
+              error,
+              loading: false,
+              errorMessage: (
+                <Message
+                  showDismissButton
+                  type="danger"
+                  title="Error While Submitting Form"
+                >
+                  Something went wrong. Try re-submitting the form, or come back
+                  later and try-again
+                </Message>
+              ),
+            });
+          }
+        );
     } else {
       setState({ error, loading: false });
     }

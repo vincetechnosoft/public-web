@@ -9,7 +9,6 @@ import React, {
 import Button from "@/components/button";
 import Message from "@/components/messages";
 import { Facebook, Linkedin, Instagram, Twitter, Youtube } from "react-feather";
-import { onContactUsFormSubmit } from "@/data/firebase";
 
 export const contactUsData = {
   contact: { email: "support@vincetechnosoft.com", phone: "+91 91733 73578" },
@@ -163,32 +162,36 @@ function ContactUsForm() {
     if (Object.values(error).find((x) => typeof x === "string") === undefined) {
       console.log(formData.current);
       setState({ error, loading: true });
-      onContactUsFormSubmit({
-        email,
-        fullName,
-        phoneNumber,
-        message,
-      }).then(
-        function () {
-          setState({ error, loading: false, success: true });
-        },
-        function () {
-          setState({
-            error,
-            loading: false,
-            errorMessage: (
-              <Message
-                showDismissButton
-                type="danger"
-                title="Error While Submitting Form"
-              >
-                Something went wrong. Try re-submitting the form, or come back
-                later and try-again
-              </Message>
-            ),
-          });
-        }
-      );
+      import("data/firebase")
+        .then(({ onContactUsFormSubmit }) =>
+          onContactUsFormSubmit({
+            email,
+            fullName,
+            phoneNumber,
+            message,
+          })
+        )
+        .then(
+          function () {
+            setState({ error, loading: false, success: true });
+          },
+          function () {
+            setState({
+              error,
+              loading: false,
+              errorMessage: (
+                <Message
+                  showDismissButton
+                  type="danger"
+                  title="Error While Submitting Form"
+                >
+                  Something went wrong. Try re-submitting the form, or come back
+                  later and try-again
+                </Message>
+              ),
+            });
+          }
+        );
     } else {
       setState({ error, loading: false });
     }
