@@ -1,10 +1,12 @@
 import HomeLayout from "layouts/home-layout";
-import { Zap, Clock, Map } from "react-feather";
-import React from "react";
+import { Zap, Clock, Map, Divide } from "react-feather";
+import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import ContactUs from "@/components/contact-us";
 import { buttonClass } from "@/components/button";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import TypeingAnimation from "@/components/typeingComponent";
 
 const highlights = [
   {
@@ -34,18 +36,32 @@ const Home: NextPage = () => {
 
 export default Home;
 
+// Need to
+const typeData = [
+  "manage inventory",
+  "accept orders",
+  "manage payments",
+  "calculate profit",
+  "create website",
+];
+
 function Starters() {
   return (
-    <div className="banner-div h-[calc(100vh-5rem-5px)] items-center justify-between bg-banner bg-right-bottom bg-no-repeat px-5 md:flex md:h-[calc(100vh-4rem)]">
+    <div className="banner-div h-[calc(100vh-4rem)] items-center justify-between bg-banner bg-right-bottom bg-no-repeat px-5 md:flex">
       <div className="space-y-7 md:space-y-10 md:px-10">
-        <h2 className="mt-5 text-3xl font-extrabold text-base2 sm:text-4xl md:text-5xl lg:text-6xl">
-          Problems with Inventory management?
-          <br />
+        <h2 className="pt-10 text-3xl font-extrabold text-base2 sm:text-4xl md:text-5xl lg:text-6xl">
+          {/* Problems with Inventory management? */}
+          Need to
+          <TypeingAnimation
+            style={{ fontSize: "75%" }}
+            typeData={typeData}
+            className="text-accent1"
+          />
+          {/* <br />
           <span className="mt-5  text-xl uppercase text-accent1 sm:text-2xl md:text-4xl">
             Just a knock away!
-          </span>
+          </span> */}
         </h2>
-        <div className="flex min-w-full justify-center lg:hidden" />
         <p className="pb-5 font-mono md:w-[50vw] md:text-lg">
           One-Stop Solution to your inventory management, get Vince Technosoft
           services to help you with your day to day task hassle free.

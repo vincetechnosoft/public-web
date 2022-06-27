@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link as LinkIcon, Video, X } from "react-feather";
 import { buttonClass } from "./button";
 import Message from "./messages";
+import { useModal } from "./modal";
 
 interface Props {
   data: TutorialStepData[];
@@ -50,7 +51,7 @@ function TutorialStep({
               {title}
             </h2>
           </Link>
-          <VideoButton id={id} src={videoLink} />
+          <VideoButton src={videoLink} />
         </div>
         <p className="font-semibold">{discription}</p>
         {note && <Message>{note}</Message>}
@@ -66,68 +67,47 @@ function TutorialStep({
   );
 }
 
-function VideoButton({ src, id }: { src?: string; id: string }) {
-  const [openVideo, setVideo] = useState(false);
-  useEffect(
-    function () {
-      const html = document.getElementsByTagName("html").item(0);
-      if (!html) return;
-      if (openVideo) {
-        html.style.overflowY = "hidden";
-      } else {
-        html.style.overflowY = "auto";
-      }
-    },
-    [openVideo]
-  );
+function VideoButton({ src }: { src?: string }) {
+  const modal = useModal();
   if (!src) return null;
-  const videoID = id + "-video";
   return (
     <div>
-      <motion.div
-        animate={
-          openVideo
-            ? { width: "100vw", height: "105vh" }
-            : { width: "0", height: 0 }
+      <motion.button
+        onClick={() => {
+          modal.open(<VideoModalComponent src={src} />);
+          // setVideo(true);
+        }}
+        className={
+          "relative flex cursor-pointer items-center " + buttonClass.secondery
         }
-        className={`base2-page ${
-          openVideo ? "" : ""
-        } absolute left-0 z-10 block -translate-y-14 bg-opacity-80`}
-        transition={{ type: "linear" }} // Set the transition to linear
+        whileHover={{ width: 165 }}
+        whileFocus={{ width: 165 }}
       >
-        <div id={videoID} className="mt-10" />
-        <X
-          onClick={() => setVideo(false)}
-          className="absolute top-14 right-5 z-20 cursor-pointer"
-        />
-        {openVideo && (
-          <video src={src} controls autoPlay className="m-auto h-full w-auto" />
-        )}
-      </motion.div>
-      <Link href={"#" + videoID}>
-        <motion.button
-          onClick={() => {
-            setVideo(true);
+        <Video />
+        <span
+          className="absolute left-16 text-base1"
+          style={{
+            overflow: "hidden",
+            textOverflow: "clip",
+            whiteSpace: "nowrap",
           }}
-          className={
-            "relative flex cursor-pointer items-center " + buttonClass.secondery
-          }
-          whileHover={{ width: 165 }}
-          whileFocus={{ width: 165 }}
         >
-          <Video />
-          <span
-            className="absolute left-16 text-base1"
-            style={{
-              overflow: "hidden",
-              textOverflow: "clip",
-              whiteSpace: "nowrap",
-            }}
-          >
-            See Video
-          </span>
-        </motion.button>
-      </Link>
+          See Video
+        </span>
+      </motion.button>
+    </div>
+  );
+}
+
+function VideoModalComponent({ src }: { src: string }) {
+  const modal = useModal();
+  return (
+    <div className="flex w-screen justify-center">
+      <X
+        onClick={modal.close}
+        className="absolute top-5 right-5 z-20 cursor-pointer"
+      />
+      <video src={src} controls autoPlay className=" h-[95vh] w-auto" />
     </div>
   );
 }

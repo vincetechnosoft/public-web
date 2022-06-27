@@ -85,50 +85,52 @@ const Navbar: React.FC = () => {
             </Link>
           </button>
         </div>
-        <div
-          onClick={() => setOpen(false)}
-          className={`${
-            open ? "absolute" : "hidden"
-          } top-0 left-0 z-[5] block h-full w-full bg-base2 opacity-90 md:hidden`}
-        />
-        <div
-          className={`absolute left-[0] top-0 z-10 block h-full ${
-            open ? "translate-x-0" : "-translate-x-96"
-          } overflow-auto bg-drawer -text-drawer duration-300 md:hidden`}
-        >
-          <div className="my-10 ml-10">
-            <Link href="/" passHref>
-              <a
-                onClick={() => setOpen(false)}
-                className="rounded-lg outline-1 outline-offset-4 focus:outline"
-              >
-                <Logo />
-              </a>
-            </Link>
-          </div>
-          {links.map((link) => (
-            <Link href={link.path} key={link.path} passHref>
-              <a
-                onClick={() => setOpen(false)}
-                className={`${
-                  router.pathname.startsWith(link.path) &&
-                  "underline underline-offset-2"
-                } ml-5 mr-32 mt-5 block focus:outline-none`}
-              >
-                {link.label}
-              </a>
-            </Link>
-          ))}
-          <div className="mt-5 ml-4 pr-10">
-            <Link href={contactUsLink}>
-              <a
-                onClick={() => setOpen(false)}
-                className={buttonClass.filled + " flex items-center"}
-              >
-                <Send className="mr-2 h-[17px] w-auto" />
-                Contact Us
-              </a>
-            </Link>
+        <div className={open ? "block" : "md:hidden"}>
+          <div
+            onClick={() => setOpen(false)}
+            className={`${
+              open ? "absolute" : "hidden"
+            } top-0 left-0 z-[5] block h-[110vh]  w-full bg-base2 opacity-90 `}
+          />
+          <div
+            className={`absolute left-[0] top-0 z-10 block h-[110vh] ${
+              open ? "translate-x-0" : "-translate-x-96"
+            } overflow-auto bg-drawer -text-drawer duration-300`}
+          >
+            <div className="my-10 ml-10 sm:ml-0">
+              <Link href="/" passHref>
+                <a
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg outline-1 outline-offset-4 focus:outline"
+                >
+                  <Logo />
+                </a>
+              </Link>
+            </div>
+            {links.map((link) => (
+              <Link href={link.path} key={link.path} passHref>
+                <a
+                  onClick={() => setOpen(false)}
+                  className={`${
+                    router.pathname.startsWith(link.path) &&
+                    "underline underline-offset-2"
+                  } ml-5 mr-32 mt-5 block focus:outline-none`}
+                >
+                  {link.label}
+                </a>
+              </Link>
+            ))}
+            <div className="mt-5 ml-4 pr-10">
+              <Link href={contactUsLink}>
+                <a
+                  onClick={() => setOpen(false)}
+                  className={buttonClass.filled + " flex items-center"}
+                >
+                  <Send className="mr-2 h-[17px] w-auto" />
+                  Contact Us
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

@@ -160,7 +160,6 @@ function ContactUsForm() {
     }
 
     if (Object.values(error).find((x) => typeof x === "string") === undefined) {
-      console.log(formData.current);
       setState({ error, loading: true });
       import("data/firebase")
         .then(({ onContactUsFormSubmit }) =>
