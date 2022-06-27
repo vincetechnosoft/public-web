@@ -20,7 +20,7 @@ const Careers: NextPage = () => {
   const selectedInfo = careersData[selectedID];
   return (
     <HomeLayout>
-      <div className="py-7 md:mt-0 md:min-h-[calc(80vh_-_4rem)]">
+      <div className="py-7 md:mt-0 md:min-h-[calc(80vh-4rem)]">
         <h2 className="mx-5 text-5xl font-extrabold md:text-6xl lg:mx-24">
           Careers
         </h2>

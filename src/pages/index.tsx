@@ -3,6 +3,8 @@ import { Zap, Clock, Map } from "react-feather";
 import React from "react";
 import { NextPage } from "next";
 import ContactUs from "@/components/contact-us";
+import { buttonClass } from "@/components/button";
+import Link from "next/link";
 
 const highlights = [
   {
@@ -34,41 +36,23 @@ export default Home;
 
 function Starters() {
   return (
-    <div className="mx-5 mb-12 flex min-h-[95vh] items-center justify-between md:mb-24 md:flex">
-      <div className="self-centrer mx-auto w-full space-y-7 text-center md:space-y-10 md:px-10 lg:w-2/3">
-        <h2 className="mt-5 text-5xl font-extrabold lg:text-6xl">
+    <div className="banner-div h-[calc(100vh-5rem-5px)] items-center justify-between bg-banner bg-right-bottom bg-no-repeat px-5 md:flex md:h-[calc(100vh-4rem)]">
+      <div className="space-y-7 md:space-y-10 md:px-10">
+        <h2 className="mt-5 text-3xl font-extrabold text-base2 sm:text-4xl md:text-5xl lg:text-6xl">
           Problems with Inventory management?
           <br />
-          <span className="mt-5 text-3xl uppercase text-accent1 md:text-4xl">
+          <span className="mt-5  text-xl uppercase text-accent1 sm:text-2xl md:text-4xl">
             Just a knock away!
           </span>
         </h2>
-        <div className="flex min-w-full justify-center lg:hidden">
-          <img
-            src="/graphic-tablet.png"
-            alt="Graphic Desk"
-            className="max-h-96"
-          />
-        </div>
-        <p className="font-mono md:text-lg lg:mx-24">
+        <div className="flex min-w-full justify-center lg:hidden" />
+        <p className="pb-5 font-mono md:w-[50vw] md:text-lg">
           One-Stop Solution to your inventory management, get Vince Technosoft
           services to help you with your day to day task hassle free.
         </p>
-        <ul className="flex w-full justify-between lg:mx-24 lg:pr-24">
-          {highlights.map((item) => (
-            <li key={item.label} className="flex items-center">
-              <span className="mr-2">{item.icon}</span>
-              <span className="sm:text-lg  md:text-xl">{item.label}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="hidden w-1/3 lg:block">
-        <img
-          src="/graphic-tablet.png"
-          alt="Graphic Desk"
-          className="aspect-square max-h-96"
-        />
+        <Link href="/#contact-us">
+          <a className={buttonClass.filled}>Let's start the conversation</a>
+        </Link>
       </div>
     </div>
   );

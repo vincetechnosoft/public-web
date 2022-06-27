@@ -26,9 +26,9 @@ export const contactUsData = {
 export default function ContactUs({ invert = false }: { invert?: boolean }) {
   return (
     <div
-      id="contact-us"
       className={`${invert ? "base2-page" : "base1-page"} min-h-[105vh] py-24`}
     >
+      <div id="contact-us" />
       <h2 className="w-full text-center text-2xl md:text-5xl">
         Book Free Consultation
       </h2>

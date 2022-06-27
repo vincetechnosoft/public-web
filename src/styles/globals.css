@@ -220,4 +220,13 @@
     prose-h2:underline-offset-2
     prose-ul:list-inside md:px-24;
   }
+  .banner-div {
+    background-size: 95vw auto;
+  }
+
+  @media (min-width: 768px) {
+    .banner-div {
+      background-size: 55% auto;
+    }
+  }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "Vince Technosoft",
+  "short_name": "Vince T.",
+  "description": "One-Stop Solution to your inventory management, get Vince Technosoft services to help you with your day to day task hassle free.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#00171f",
+  "background_color": "#e5e5e5",
+  "display": "standalone"
+}

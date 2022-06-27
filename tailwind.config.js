@@ -59,6 +59,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         attachment: "url(/attachment.svg)",
+        banner: "url(/banner.svg)",
       },
     },
   },
