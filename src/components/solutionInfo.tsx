@@ -33,7 +33,7 @@ const SolutionInfo: React.FC<Props> = ({
           discription={discription}
           urlPath={pathName}
           withTitle
-          poster={poster}
+          posterPath={poster}
         />
       </Head>
       <div className="typography">

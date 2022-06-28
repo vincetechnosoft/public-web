@@ -1,7 +1,7 @@
 interface Props {
   title: string;
   discription: string;
-  poster: string;
+  posterPath: string;
   urlPath?: string;
   withTitle?: boolean;
 }
@@ -20,13 +20,13 @@ export default function SeoLinks(data: Props) {
       <meta property="og:url" content={url + (data.urlPath ?? "")} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={data.discription} />
-      <meta property="og:image" content={data.poster} />
+      <meta property="og:image" content={url + data.posterPath} />
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={url + (data.urlPath ?? "")} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={data.discription} />
-      <meta property="twitter:image" content={data.poster} />
+      <meta property="twitter:image" content={url + data.posterPath} />
     </>
   );
 }

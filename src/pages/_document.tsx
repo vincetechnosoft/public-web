@@ -1,7 +1,7 @@
 import SeoLinks from "@/components/seo";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 const data = {
-  poster: "/compney poster.png",
+  posterPath: "/compney_poster.png",
   title:
     "Mobile App Development Company | Custom Web Design & Development Services | Vince Technosoft",
   discription:

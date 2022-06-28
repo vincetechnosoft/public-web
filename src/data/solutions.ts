@@ -16,7 +16,7 @@ export const distributor: SolutionInfo = {
     // "Analitics",
   ],
   iconPath: "/solutions/distributor.png",
-  poster: "/solutions/distributor poster.png",
+  poster: "/solutions/distributor_poster.png",
 };
 
 export const distributorClient: SolutionInfo = {
@@ -32,5 +32,5 @@ export const distributorClient: SolutionInfo = {
     "Generate Reports for each relation",
   ],
   iconPath: "/solutions/distributor-client.png",
-  poster: "/solutions/distributor-client poster.png",
+  poster: "/solutions/distributor-client_poster.png",
 };
