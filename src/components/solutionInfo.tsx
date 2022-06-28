@@ -1,6 +1,9 @@
 import Button from "./button";
 import { useCallback, useState } from "react";
 import { AndroudIcon } from "./icons";
+import Head from "next/head";
+import SeoLinks from "./seo";
+import { useRouter } from "next/router";
 
 interface Props {
   id: string;
@@ -8,6 +11,7 @@ interface Props {
   discription: string;
   capabalities: string[];
   iconPath: string;
+  poster: string;
 }
 
 export type SolutionInfo = Props;
@@ -18,30 +22,43 @@ const SolutionInfo: React.FC<Props> = ({
   iconPath,
   id,
   title,
+  poster,
 }) => {
+  const pathName = useRouter().pathname;
   return (
-    <div className="typography">
-      <div id={id} className="items-center md:flex">
-        <img
-          src={iconPath}
-          alt="distributor"
-          className="mr-10 h-24 w-24 rounded-lg ring-1 ring-offset-2"
+    <>
+      <Head>
+        <SeoLinks
+          title={title}
+          discription={discription}
+          urlPath={pathName}
+          withTitle
+          poster={poster}
         />
-        <div className="w-full">
-          <h1>{title}</h1>
-          <p>{discription}</p>
+      </Head>
+      <div className="typography">
+        <div id={id} className="items-center md:flex">
+          <img
+            src={iconPath}
+            alt="distributor"
+            className="mr-10 h-24 w-24 rounded-lg ring-1 ring-offset-2"
+          />
+          <div className="w-full">
+            <h1>{title}</h1>
+            <p>{discription}</p>
+          </div>
+        </div>
+        <h2>Capabalities</h2>
+        <ul>
+          {capabalities.map((x) => (
+            <li key={x}>{x}</li>
+          ))}
+        </ul>
+        <div className="my-10 flex justify-end">
+          <DownloadAndroidApk id={id} />
         </div>
       </div>
-      <h2>Capabalities</h2>
-      <ul>
-        {capabalities.map((x) => (
-          <li key={x}>{x}</li>
-        ))}
-      </ul>
-      <div className="my-10 flex justify-end">
-        <DownloadAndroidApk id={id} />
-      </div>
-    </div>
+    </>
   );
 };
 
