@@ -27,6 +27,7 @@ function init() {
 }
 
 const app = getApps()[0] ?? init();
+export default app;
 const apkStorage = getStorage(app, "gs://vincetechnosoft-applications");
 const publicStorage = getStorage(app, "gs://vincetechnosoft-public-info");
 const functions = getFunctions(app, "asia-south1");

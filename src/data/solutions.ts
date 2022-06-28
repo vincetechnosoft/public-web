@@ -19,16 +19,16 @@ export const distributor: SolutionInfo = {
 };
 
 export const distributorClient: SolutionInfo = {
-  id: "distributor-client",
-  title: "Client-Side app",
-  discription: "Buyer Interface for distributors.",
+  id: "distributor_client",
+  title: "Distributor Client's app",
+  discription: "Distributor's Client (Buyer) Interface for tracking relations.",
   capabalities: [
     "Make orders",
     "Stock Bought",
     "Current Due Payment",
     "Current Due Boxes (for Amul like distributors)",
     "Return Boxes",
-    "Generate monthly Reports for each relation",
+    "Generate Reports for each relation",
   ],
   iconPath: "/solutions/distributor-client.png",
 };

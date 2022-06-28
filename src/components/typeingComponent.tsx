@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props extends React.HTMLAttributes<HTMLSpanElement> {
   typeData: string[];
@@ -32,7 +32,7 @@ export default function TypeingAnimation({ typeData, ...props }: Props) {
           if (type === text) {
             if (directionWrite) {
               return { currentIndex, directionWrite: false, type, done: 1 };
-            } else if (done++ < 4) {
+            } else if (done++ < 8) {
               return {
                 currentIndex,
                 directionWrite,

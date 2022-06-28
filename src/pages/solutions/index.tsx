@@ -22,7 +22,7 @@ const Solutions: NextPage = () => {
         <div className="mx-5 lg:mx-10">
           {[distributor, distributorClient].map(
             ({ capabalities, discription, iconPath, id, title }, i) => (
-              <Link key={i} href={"/" + id}>
+              <Link key={i} href={"/solutions/" + id}>
                 <div id={id} className="clickable-card relative mb-10 sm:flex">
                   <img
                     src={iconPath}
