@@ -15,7 +15,7 @@ const defaultProps = {
         "One-Stop Solution to your inventory management, get Vince Technosoft services to help you with your day to day task hassle free.",
 }
 
-const _url = "http://localhost:3000/";//"https://public-web-9f3.pages.dev/"; //"https://vincetechnosoft.com/";
+const _url = "https://public-web-9f3.pages.dev/"; //"https://vincetechnosoft.com/";
 
 export type SeoLinksProps = Props;
 
