@@ -1,36 +1,39 @@
-import { SolutionInfo } from "@/components/solutionInfo";
+import {SeoLinksProps} from "@/components/seo";
+import {SolutionInfo} from "@/components/solutionInfo";
 
-export const distributor: SolutionInfo = {
-  id: "distributor",
-  title: "Distributor's app",
-  discription: "Solution for distributors, a business to business solution.",
-  capabalities: [
-    // "Take orders",
-    "Inventory management",
-    "Wallet management",
-    "Manage Due payments",
-    "Manage Due Boxes (for Amul like distributors)",
-    "Profit calculations",
-    "Generate monthly Reports for each relation",
-    // "Send Buyers there whatsapp report",
-    // "Analitics",
-  ],
-  iconPath: "/solutions/distributor.png",
-  poster: "/solutions/distributor_poster.png",
+type data = SolutionInfo & SeoLinksProps;
+
+export const distributor: data = {
+    id: "distributor",
+    title: "Distributor's app",
+    description: "Solution for distributors, a business to business solution.",
+    capabilities: [
+        // "Take orders",
+        "Inventory management",
+        "Wallet management",
+        "Manage Due payments",
+        "Manage Due Boxes (for Amul like distributors)",
+        "Profit calculations",
+        "Generate monthly Reports for each relation",
+        // "Send Buyers there whatsapp report",
+        // "Analytics",
+    ],
+    iconPath: "/solutions/distributor.png",
+    posterPath: "/solutions/distributor_poster.png",
 };
 
-export const distributorClient: SolutionInfo = {
-  id: "distributor_client",
-  title: "Distributor Client's app",
-  discription: "Distributor's Client (Buyer) Interface for tracking relations.",
-  capabalities: [
-    "Make orders",
-    "Stock Bought",
-    "Current Due Payment",
-    "Current Due Boxes (for Amul like distributors)",
-    "Return Boxes",
-    "Generate Reports for each relation",
-  ],
-  iconPath: "/solutions/distributor-client.png",
-  poster: "/solutions/distributor-client_poster.png",
+export const distributorClient: data = {
+    id: "distributor-client",
+    title: "Distributor Client's app",
+    description: "Distributor's Client (Buyer) Interface for tracking relations.",
+    capabilities: [
+        "Make orders",
+        "Stock Bought",
+        "Current Due Payment",
+        "Current Due Boxes (for Amul like distributors)",
+        "Return Boxes",
+        "Generate Reports for each relation",
+    ],
+    iconPath: "/solutions/distributor-client.png",
+    posterPath: "/solutions/distributor-client_poster.png",
 };
