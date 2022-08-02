@@ -15,7 +15,7 @@ const defaultProps = {
         "One-Stop Solution to your inventory management, get Vince Technosoft services to help you with your day to day task hassle free.",
 }
 
-const _url = "https://public-web-9f3.pages.dev/"; //"https://vincetechnosoft.com/";
+const _url = "http://localhost:3000/";//"https://public-web-9f3.pages.dev/"; //"https://vincetechnosoft.com/";
 
 export type SeoLinksProps = Props;
 
@@ -23,7 +23,7 @@ export default function SeoLinks(data: Props) {
     const pathName = useRouter()?.pathname;
     const title = (data.title ?? defaultProps.title) + " | Vince Technosoft";
     const url = (_url + (pathName ?? "")).replaceAll("//", "/");
-    const image = (url + (data.posterPath ?? data.posterPath)).replaceAll("//", "/");
+    const image = (_url + (data.posterPath ?? defaultProps.posterPath)).replaceAll("//", "/");
     const description = data.description ?? defaultProps.description;
     return (
         <Head>
