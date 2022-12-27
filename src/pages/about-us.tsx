@@ -19,6 +19,8 @@ export default AboutUs;
 
 function CompanyInfo() {
     return (
+
+
         <p className="mx-5 mt-5 text-lg md:text-2xl lg:mx-24">
             Vince Techno Soft Provides Business Software Solutions which are
             customized and generic to render and solve the extensive mundane problems
