@@ -4,7 +4,7 @@ import SolutionInfo from "@/components/solutionInfo";
 import HomeLayout from "@/layouts/home-layout";
 import ContactUs from "@/components/contact-us";
 import { useRouter } from "next/router";
-import Page404 from "../404";
+import Page404 from "../../404";
 import getTutorial from "@/data/tutorials";
 import Tutorial from "@/components/tutorial";
 
