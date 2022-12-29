@@ -1,4 +1,25 @@
-import { TutorialData } from "@/components/tutorial";
+import { NextPage } from "next";
+import SolutionData from "data/solutions";
+import SolutionInfo from "@/components/solutionInfo";
+import HomeLayout from "@/layouts/home-layout";
+import ContactUs from "@/components/contact-us";
+import Tutorial, { TutorialData } from "@/components/tutorial";
+import ErrorPage from "@/components/error-page";
+
+const PublicAvalableSolution: NextPage = () => {
+  const id = "distributor";
+  const info = Object.values(SolutionData).find((x) => x.id === id);
+  if (!info) return <ErrorPage status={404} title="No Such App Available" />;
+  return (
+    <HomeLayout seoData={info}>
+      <SolutionInfo {...info} />
+      <ContactUs />
+      <Tutorial data={tutorial} />
+    </HomeLayout>
+  );
+};
+
+export default PublicAvalableSolution;
 
 const tutorial: TutorialData = [
   {
@@ -283,5 +304,3 @@ const tutorial: TutorialData = [
     ],
   },
 ];
-
-module.exports = tutorial;
